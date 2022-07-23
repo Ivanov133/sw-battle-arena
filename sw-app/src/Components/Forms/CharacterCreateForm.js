@@ -8,7 +8,7 @@ export const CharacterCreateForm = ({
     const [shortImg, shortImgSetter] = useState(null)
     const [fullImg, fullImgSetter] = useState(null)
 
-    
+
     const [shortImgInput, shortImgInputSetter] = useState(null)
     const [fullImgInput, fullImgInputSetter] = useState(null)
 
@@ -26,7 +26,6 @@ export const CharacterCreateForm = ({
     return (
         <div className={styles['add-form']}>
             <h1>Character Cretor</h1>
-            <button onClick={onClose} >Cancel</button>
 
             <form>
                 <label htmlFor="name">Name</label>
@@ -40,7 +39,7 @@ export const CharacterCreateForm = ({
                     <option value="volvo">Dark Side</option>
                     <option value="saab">Light Side</option>
                 </select>
-                
+
                 <label htmlFor="force-power">Force Power</label>
                 <input placeholder='Metric only for the force power (1-100)' id="force-power" type="number" name="force-power" />
 
@@ -51,21 +50,21 @@ export const CharacterCreateForm = ({
                 <input placeholder='Takes into account all the above powers and feats (1-100)' id="full-power" type="number" name="full-power" />
 
                 <label htmlFor="shortImg">Card image</label>
-                <input 
+                <input
                     placeholder='URL of the image - will be displayed in the catalog section'
-                    id="shortImg" 
-                    type="text" 
+                    id="shortImg"
+                    type="text"
                     name="shortImg"
-                    onChange={shortImgChangeHandler} 
+                    onChange={shortImgChangeHandler}
                     value={shortImgInput} />
 
                 <label htmlFor="fullImg">Full Image</label>
-                <input 
-                    placeholder='URL of the image - will be displayed in the details section' 
-                    id="fullImg" 
-                    type="text" 
+                <input
+                    placeholder='URL of the image - will be displayed in the details section'
+                    id="fullImg"
+                    type="text"
                     name="fullImg"
-                    onChange={fullImgChangeHandler} 
+                    onChange={fullImgChangeHandler}
                     value={fullImgInput} />
 
                 <label htmlFor="quote">Quote</label>
@@ -76,14 +75,20 @@ export const CharacterCreateForm = ({
 
                 <label htmlFor="feats">Feats</label>
                 <input placeholder='List the characters feats and separate them with a comma "," ' id="feats" type="text" name="feats" />
+                
+                <button type='submit' className={styles['submit-btn']} onClick={onClose} >Cancel</button>
+
 
             </form>
 
             <div className={styles['short-img-preview']}>
                 <img src={shortImg} alt="" />
+                <h1>Card image preview</h1>
+
             </div>
             <div className={styles['full-img-preview']}>
                 <img src={fullImg} alt="" />
+                <h1>Full image preview</h1>
             </div>
         </div>
     )
