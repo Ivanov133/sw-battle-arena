@@ -20,26 +20,6 @@
     font-size: 20px;
 }
 
-/* CSS for ADD and BATTLE section */
-.battle-panel {
-    display: flex;
-    position: fixed;
-    border: 2px solid rgb(6, 6, 6);
-    border-radius: 5px;
-    background-color: black;
-    width: 150px;
-    height: 80px;
-    top: 70px;
-    right: 100px;
-}
-
-.battle-panel h1 {
-    position: absolute;
-    color: white;
-    font-size: 15px;
-    text-align: center;
-}
-
 
 .add {
     position: absolute;
@@ -52,40 +32,4 @@
 .add :hover {
     background-color: hsl(68, 100%, 57%, 0.7);
     box-shadow: 0px 0px 30px 12px #E1FF24;
-}
-
-.battle {
-    position: absolute;
-    width: 60px;
-    height: 60px;
-    top: -2px;
-    right: -65px;
-}
-
-.battle a {
-    text-decoration: none;
-    position: absolute;
-    bottom: -6px;
-    left: 15px;
-    text-align: center;
-    color: white;
-
-}
-
-.battle :hover {
-    background-color: hsl(68, 100%, 57%, 0.7);
-    box-shadow: 0px 0px 30px 12px #E1FF24;
-}
-
-
-.character-img {
-    width: 50%;
-    border: black;
-}
-
-.vs-img {
-    position: absolute;
-    width: 45px;
-    left: 40px;
-    top: 18px;
 }

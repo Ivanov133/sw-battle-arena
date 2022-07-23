@@ -4,7 +4,7 @@ import { Navbar } from './Components/Basic/Navbar';
 import { Footer } from './Components/Basic/Footer';
 import { Routes, Route } from 'react-router-dom'
 import styles from './App.module.css'
-import { Battle } from './Components/Battle';
+import { Battle } from './Components/Battles/Battle';
 function App() {
   return (
 

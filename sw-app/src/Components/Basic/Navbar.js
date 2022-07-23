@@ -3,6 +3,7 @@ import { GiSwordTie, GiExplodingPlanet, GiRobe, GiRun, GiOverlordHelm } from "re
 import { NavLink } from 'react-router-dom'
 
 export const Navbar = () => {
+
     const setStyleColor = ({isActive}) => {
         return isActive
             ? styles['active-link']
