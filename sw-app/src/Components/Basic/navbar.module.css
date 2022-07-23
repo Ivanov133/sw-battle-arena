@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+
+.nav-panel {
+    height: 75px;
+    background-color: rgba(255, 255, 255, 0.60);
+    border: 0 solid white;
+    display: flex;
+    position: relative;
+    justify-content: space-evenly;
+    box-shadow: 0px 0px 16px 3px rgba(38,38,38,0.88);
+}
+
+.nav-panel a {
+    text-decoration: none;
+    font-weight: 900;   
+    font-size: 2vw;
+}
+
+.nav-panel li :hover {
+    color: black;
+    text-shadow: 0px 4px 20px #000000;
+}
+
+.nav-panel ul {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.nav-panel li {
+    list-style: none;
+}
+
+.nav-panel div {
+    position: absolute;
+    bottom: -55px;
+}
+
+.nav-panel div p {
+    font-size: 15px;
+    font-weight: 900;
+    color: darkred;
+    text-align: center;
+    position: absolute;
+    bottom: -12px;
+    left: 12px;
+}
+
+.nav-panel img {
+    width: 125px;
+    position: relative;
+
+}
+
+.active-link {
+    color: darkred;
+}
+
+.inactive-link {
+    color: rgba(0, 0, 0, 0.7);
+}

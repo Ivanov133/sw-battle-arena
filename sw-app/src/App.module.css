@@ -1,0 +1,7 @@
+body {
+    font-family: Jost;
+    background-image: url('../public/static/images/teahub.io-star-wars-wallpaper-2090.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    cursor: url('../../../../../games/Button.ani'), auto;
+}
