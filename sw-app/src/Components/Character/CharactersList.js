@@ -39,9 +39,11 @@ export const CharacterList = () => {
     };
 
     return (
+    <>
+        <BattlePanel data={battleCharacters} />
         <main className={styles['character-list-container']}>
             {formType === "Create" && <CharacterCreateForm onClose={closeHandler} />}
-            <BattlePanel data={battleCharacters} />
+
 
             <h1>Characters Catalog</h1>
             {characters.map(character => <Character clickEv={ev => selectCharacters(ev, character)} key={character._id} characterData={character} />)}
@@ -49,5 +51,6 @@ export const CharacterList = () => {
                 <img src="https://i.ibb.co/DpQ6Xxx/add-icon-png-2459.png" alt="" />
             </div>
         </main>
+    </>
     )
 }
