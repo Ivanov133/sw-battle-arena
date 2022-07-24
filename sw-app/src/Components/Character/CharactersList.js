@@ -3,6 +3,8 @@ import { useState, useEffect } from "react"
 import styles from "./CharacterList.module.css"
 import { BattlePanel } from '../Battles/BattlePanel'
 import { CharacterCreateForm } from "../Forms/CharacterCreateForm"
+import {getAllCharacters} from '../../services/characterService'
+
 
 export const CharacterList = () => {
     const [characters, setCharacters] = useState([])
@@ -11,8 +13,7 @@ export const CharacterList = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:3030/jsonstore/characters`)
-            .then(response => response.json())
+        getAllCharacters()
             .then(result => {
                 setCharacters(Object.values(result))
             })
