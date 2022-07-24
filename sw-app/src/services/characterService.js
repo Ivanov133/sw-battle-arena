@@ -5,6 +5,16 @@ export async function getAllCharacters() {
     return result
 }
 
-export async function createCharacter(characterData) {
+export async function createCharacter(data) {
+    const response = await fetch("http://localhost:3030/jsonstore/characters", {
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json',
+        },
+        body: JSON.stringify(data)
+    });
 
+    const result = await response.json();
+
+    return result.user;
 }

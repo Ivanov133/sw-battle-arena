@@ -43,7 +43,7 @@ export const CharacterList = () => {
     <>
         <BattlePanel data={battleCharacters} />
         <main className={styles['character-list-container']}>
-            {formType === "Create" && <CharacterCreateForm onClose={closeHandler} />}
+            {formType === "Create" && <CharacterCreateForm setCharacters={selectCharacters} onClose={closeHandler} />}
 
 
             <h1>Characters Catalog</h1>

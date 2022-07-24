@@ -1,8 +1,11 @@
 import { useState } from 'react'
 import styles from '../Forms/CharacterCreateForm.module.css'
+import * as characterService from '../../services/characterService'
+
 
 export const CharacterCreateForm = ({
-    onClose
+    onClose,
+    setCharacters
 }) => {
 
     const [values, setValues] = useState({
@@ -20,17 +23,17 @@ export const CharacterCreateForm = ({
     })
 
     const [errors, setErrors] = useState({
-        name: '',
-        description: '',
-        allegiance: '',
-        force: '',
-        dueling: '',
-        fullPower: '',
-        shortImg: '',
-        fullImg: '',
-        quote: '',
-        author: '',
-        feats: '',
+        name: false,
+        description: false,
+        allegiance: false,
+        force: false,
+        dueling: false,
+        fullPower: false,
+        shortImg: false,
+        fullImg: false,
+        quote: false,
+        author: false,
+        feats: false,
     })
 
     const changeHandler = (e) => {
@@ -42,7 +45,18 @@ export const CharacterCreateForm = ({
 
     const onSubmit = (e) => {
         e.preventDefault()
-        console.log(values)
+        for (let key in errors) {
+            if (errors[key]) {
+                return alert("Not all input fields are valid!");
+            }
+        }
+        
+        let data = Object.fromEntries(new FormData(e.target.parentNode))
+        characterService.createCharacter(data)
+        .then(character => {
+            setCharacters(oldData => [...oldData, character]);
+            onClose();
+        });
     }
 
     const validateLength = (e, minLength) => {
@@ -64,7 +78,15 @@ export const CharacterCreateForm = ({
     }
 
     const validatePositiveNum = (e, min) => {
-        if (Number(values[e.target.name]) < min) {
+        if (isNaN(values[e.target.name])) {
+            setErrors(
+                errors => ({
+                    ...errors,
+                    [e.target.name]: true,
+                })
+            ) 
+        }
+        else if (Number(values[e.target.name]) < min || Number(values[e.target.name]) > 100) {
             setErrors(
                 errors => ({
                     ...errors,
@@ -90,11 +112,11 @@ export const CharacterCreateForm = ({
             <form>
                 <label htmlFor="name">Name</label>
                 <input onBlur={(e) => validateLength(e, 3)} onChange={changeHandler} value={values.name} placeholder='Enter full name or nickname' id="name" type="text" name="name" />
-                {errors.name && <p>TEST name error</p>}
+                {errors.name && <p>Name must be at least 3 symbols long</p>}
 
                 <label htmlFor="description">Description</label>
                 <textarea onBlur={(e) => validateLength(e, 50)} onChange={changeHandler} value={values.description} placeholder='Describe your character' id="description" type="text" name="description" />
-                {errors.description && <p>TEST name error</p>}
+                {errors.description && <p>Description must be at least 50 symbols long</p>}
 
                 <label htmlFor="allegiance">Allegiance</label>
                 <select onChange={changeHandler} value={values.allegiance} id="allegiance" name="allegiance">
@@ -103,17 +125,20 @@ export const CharacterCreateForm = ({
                 </select>
 
                 <label htmlFor="force">Force Power</label>
-                <input onChange={changeHandler} value={values.force} placeholder='Metric only for the force power (1-100)' id="force" type="number" name="force" />
-                {errors.description && <p>TEST name error</p>}
+                <input onBlur={(e) => validatePositiveNum(e, 1)} onChange={changeHandler} value={values.force} placeholder='Metric only for the force power (1-100)' id="force" type="number" name="force" />
+                {errors.force && <p>Force must be in range 1-100</p>}
 
                 <label htmlFor="dueling">Dueling Power</label>
-                <input onChange={changeHandler} value={values.dueling} placeholder='Metric only for the duling capabilities (1-100)' id="dueling" type="number" name="dueling" />
+                <input onBlur={(e) => validatePositiveNum(e, 1)} onChange={changeHandler} value={values.dueling} placeholder='Metric only for the duling capabilities (1-100)' id="dueling" type="number" name="dueling" />
+                {errors.dueling && <p>Dueling must be in range 1-100</p>}
 
                 <label htmlFor="feats">Feats</label>
-                <input onChange={changeHandler} value={values.feats} placeholder='List the characters feats and separate them with a comma "," ' id="feats" type="text" name="feats" />
+                <input onBlur={(e) => validateLength(e, 10)} onChange={changeHandler} value={values.feats} placeholder='List the characters feats and separate them with a comma "," ' id="feats" type="text" name="feats" />
+                {errors.feats && <p>Feats must be at least 10 symbols long</p>}
 
                 <label htmlFor="fullPower">Full Power</label>
-                <input onChange={changeHandler} value={values.fullPower} placeholder='Takes into account all the above powers and feats (1-100)' id="fullPower" type="number" name="fullPower" />
+                <input onBlur={(e) => validatePositiveNum(e, 1)} onChange={changeHandler} value={values.fullPower} placeholder='Takes into account all the above powers and feats (1-100)' id="fullPower" type="number" name="fullPower" />
+                {errors.fullPower && <p>Full power must be in range 1-100</p>}
 
                 <label htmlFor="shortImg">Card image</label>
                 <input
@@ -134,14 +159,16 @@ export const CharacterCreateForm = ({
                     value={values.fullImg} />
 
                 <label htmlFor="quote">Quote</label>
-                <input onChange={changeHandler} value={values.quote} placeholder='What is said about the character from others, or by himself' id="quote" type="text" name="quote" />
+                <input onBlur={(e) => validateLength(e, 10)}  onChange={changeHandler} value={values.quote} placeholder='What is said about the character from others, or by himself' id="quote" type="text" name="quote" />
+                {errors.quote && <p>Quote must be at least 10 symbols long</p>}
 
                 <label htmlFor="author">Quote Author</label>
-                <input onChange={changeHandler} value={values.author} placeholder='Name of author' id="author" type="text" name="author" />
+                <input onBlur={(e) => validateLength(e, 3)}  onChange={changeHandler} value={values.author} placeholder='Name of author' id="author" type="text" name="author" />
+                {errors.author && <p>Name of author must be at least 3 symbols long</p>}
 
 
 
-                <button type='button' className={styles['submit-btn']} onClick={onSubmit} >Submit</button>
+                <button  onClick={onSubmit} className={styles['submit-btn']} >Submit</button>
 
 
             </form>
