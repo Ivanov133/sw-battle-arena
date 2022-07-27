@@ -4,13 +4,13 @@ import { useEffect, useState } from 'react'
 import { GiZeusSword } from "react-icons/gi";
 import { AiOutlineComment, AiTwotoneEdit } from "react-icons/ai";
 import { CharacterEditForm } from '../Forms/CharacterEditForm';
-
+import { Comment } from '../Comments/Comment'
 
 export const CharacterDetails = () => {
     const { charId } = useParams()
     const [character, setCharacter] = useState([])
     const [formType, setFormType] = useState(null)
-
+    const [comments, setComments] = useState([])
 
     useEffect(() => {
         fetch(`http://localhost:3030/jsonstore/characters/${charId}`)
@@ -21,6 +21,16 @@ export const CharacterDetails = () => {
                 }
             )
     }, [charId])
+
+    useEffect(() => {
+        fetch(`http://localhost:3030/jsonstore/comments/`)
+            .then(res => res.json())
+            .then(
+                result => {
+                    setComments(result)
+                }
+            )
+    }, [])
 
     function userAction(action) {
         setFormType(action)
@@ -79,7 +89,10 @@ export const CharacterDetails = () => {
                     </div>
 
                 </div>
-                {formType === "Edit" && <CharacterEditForm onClose={closeHandler} character={character} setCharacter={setCharacter}/>}
+                {formType === "Edit" && <CharacterEditForm onClose={closeHandler} character={character} setCharacter={setCharacter} />}
+            </div>
+            <div className="comments-section">
+                {comments.map(comment => <Comment commentData={comment} />)}
             </div>
         </>
     )

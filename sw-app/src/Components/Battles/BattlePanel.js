@@ -6,14 +6,14 @@ export const BattlePanel = (props) => {
     return (
         <div style={{ display: props.data.length > 0 ? '' : 'none' }} title="Selected characters" className={styles['battle-panel']} >
         {props.data.length === 1
-            ? <img className={styles['character-img']} src={props.data[0].img} alt="" />
+            ? <img className={styles['character-img']} src={props.data[0].shortImg} alt="" />
             : null
         }
         {props.data.length === 2
             ? <>
-                <img className={styles['character-img']} src={props.data[0].img} alt="" />
+                <img className={styles['character-img']} src={props.data[0].shortImg} alt="" />
                 <img className={styles['vs-img']} src="https://i.ibb.co/ZS1382W/Versus-PNG-Image-File.png" alt="" />
-                <img className={styles['character-img']} src={props.data[1].img} alt="" />
+                <img className={styles['character-img']} src={props.data[1].shortImg} alt="" />
                 <div title="Start Battle" className={styles['battle']} >
 
 

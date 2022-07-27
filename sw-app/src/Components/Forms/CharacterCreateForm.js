@@ -117,7 +117,7 @@ export const CharacterCreateForm = ({
             <div onClick={onClose} className={styles['close-form']} title="Cancel">
                 <img src="https://i.ibb.co/0XzFW4q/Delete-Red-X-Button-Transparent.png" alt="" />
             </div>
-            <h1>Character Cretor</h1>
+            <h1>Character Creator</h1>
             <form>
                 <label htmlFor="name">Name</label>
                 <input onBlur={(e) => validateLength(e, 3)} onChange={changeHandler} value={values.name} placeholder='Enter full name or nickname' id="name" type="text" name="name" />

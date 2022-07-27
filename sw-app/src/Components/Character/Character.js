@@ -13,7 +13,7 @@ export const Character = ({
                 ? `${styles['short-card']} ${styles['dark-side']}`
                 : `${styles['short-card']} ${styles['light-side']}`
         }>
-            <img src={character.img} alt="" />
+            <img src={character.shortImg} alt="" />
             <h2>{character.name}</h2>
             <section className={styles['stats-bar']}>
                 <div className={styles['stats-wrapper']}>
