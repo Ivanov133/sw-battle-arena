@@ -1,4 +1,4 @@
-.add-form {
+.form {
     position:fixed;
     padding:0;
     margin:0;
@@ -15,12 +15,12 @@
     
 }
 
-.add-form h1 {
+.form h1 {
     color: white;
     margin-top: 25px;
 }
 
-.add-form form {
+.form form {
     display: flex;
     flex-direction: column;
     width: 65%;
@@ -32,11 +32,11 @@
     align-items: center;
 }
 
-.add-form form textarea {
+.form form textarea {
     height: 80px;
 }
 
-.add-form form input, textarea {
+.form form input, textarea {
     background-color: black;
     border-radius: 5px;
     font-size: 13px;
@@ -45,8 +45,12 @@
     width: 100%;
 }
 
-
-.add-form form select {
+.form p {
+    color: red;
+    font-size: 12px;
+    text-align: left;
+}
+.form form select {
     background-color: black;
     color: white;
     border: none;
@@ -55,13 +59,13 @@
 
 }
 
-.add-form form label {
+.form form label {
     color: white;
     text-align: center;
     margin: 6px;
 }
 
-.add-form form input, select, textarea {
+.form form input, select, textarea {
     padding: 5px;
 }
 

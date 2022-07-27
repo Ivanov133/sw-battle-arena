@@ -2,10 +2,15 @@ import styles from '../Character/CharacterDetails.module.css'
 import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { GiZeusSword } from "react-icons/gi";
+import { AiOutlineComment, AiTwotoneEdit } from "react-icons/ai";
+import { CharacterEditForm } from '../Forms/CharacterEditForm';
 
-export const CharacterDetails = (props) => {
+
+export const CharacterDetails = () => {
     const { charId } = useParams()
     const [character, setCharacter] = useState([])
+    const [formType, setFormType] = useState(null)
+
 
     useEffect(() => {
         fetch(`http://localhost:3030/jsonstore/characters/${charId}`)
@@ -17,6 +22,13 @@ export const CharacterDetails = (props) => {
             )
     }, [charId])
 
+    function userAction(action) {
+        setFormType(action)
+    }
+
+    function closeHandler() {
+        setFormType(null);
+    };
 
     return (
         <>
@@ -33,7 +45,7 @@ export const CharacterDetails = (props) => {
                             </p>
                         </div>
                         <div >
-                                <img src="https://i.ibb.co/YNGX5SJ/5a32bf7047e2870dc3bf81a5d8c7db1e361c329f-00.jpg" alt="" />
+                            <img src="https://i.ibb.co/YNGX5SJ/5a32bf7047e2870dc3bf81a5d8c7db1e361c329f-00.jpg" alt="" />
 
                             <p>Full Power: {character.fullPower}</p>
                         </div>
@@ -55,12 +67,19 @@ export const CharacterDetails = (props) => {
                 </div>
                 <div className={styles['content']}>
                     {character.quote ?
-                        < p className={styles['quote-text']}>{character.quote['text']} - {character.quote['author']}</p>
+                        < p className={styles['quote-text']}>{character.quote} - {character.author}</p>
                         : null}
                     <p className={styles['full-description']}>
                         {character.description}
                     </p>
+                    <div className={styles['buttons']}>
+                        <button onClick={() => userAction("Edit")} className={styles['edit-btn']}><AiTwotoneEdit /> Edit character</button>
+                        <button onClick={() => userAction("Delete")} className={styles['delete-btn']}><AiTwotoneEdit /> Delete character</button>
+                        <button className={styles['add-btn']}><AiOutlineComment />Add Comment</button>
+                    </div>
+
                 </div>
+                {formType === "Edit" && <CharacterEditForm onClose={closeHandler} character={character} setCharacter={setCharacter}/>}
             </div>
         </>
     )

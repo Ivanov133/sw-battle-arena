@@ -5,21 +5,38 @@ import { Footer } from './Components/Basic/Footer';
 import { Routes, Route } from 'react-router-dom'
 import styles from './App.module.css'
 import { Battle } from './Components/Battles/Battle';
+import { CharactersContext } from './contexts/charactersContext'
+import { useState, useEffect } from 'react';
+import { getAllCharacters } from './services/characterService'
+
+
 function App() {
-  return (
+    const [characters, setCharacters] = useState([])
+    useEffect(() => {
+        getAllCharacters()
+            .then(result => {
+                setCharacters(Object.values(result))
+            })
+    }, []);
 
-    <div style={styles} className="App">
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<h1>Home Page</h1>} />
-        <Route path="/characters" element={<CharacterList />} />
-        <Route path="/characters/:charId" element={<CharacterDetails />} />
-        <Route path="/battle-create" element={<Battle />} />
-      </Routes>
-      <Footer></Footer>
 
-    </div>
-  );
+    return (
+
+        <div style={styles} className="App">
+            <CharactersContext.Provider value={{ characters, setCharacters }}>
+                <Navbar />
+                <Routes>
+                    <Route path="/" element={<h1>Home Page</h1>} />
+                    <Route path="/characters" element={<CharacterList setCharacters={setCharacters} characters={characters} />} />
+                    <Route path="/characters/:charId" element={<CharacterDetails />} />
+                    <Route path="/battle-create" element={<Battle />} />
+                </Routes>
+                <Footer></Footer>
+            </CharactersContext.Provider >
+
+        </div>
+
+    );
 }
 
 export default App;

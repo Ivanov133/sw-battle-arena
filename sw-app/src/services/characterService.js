@@ -16,5 +16,19 @@ export async function createCharacter(data) {
 
     const result = await response.json();
 
-    return result.user;
+    return result;
+}
+
+export async function editCharacter(data, id) {
+    const response = await fetch(`http://localhost:3030/jsonstore/characters/${id}`, {
+        method: 'PUT',
+        headers: {
+            'content-type': 'application/json',
+        },
+        body: JSON.stringify(data)
+    });
+
+    const result = await response.json();
+
+    return result;
 }
