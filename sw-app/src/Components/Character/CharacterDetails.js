@@ -2,7 +2,7 @@ import styles from '../Character/CharacterDetails.module.css'
 import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { GiZeusSword } from "react-icons/gi";
-import { AiOutlineComment, AiTwotoneEdit } from "react-icons/ai";
+import { AiOutlineComment, AiTwotoneEdit, AiOutlineDelete } from "react-icons/ai";
 import { CharacterEditForm } from '../Forms/CharacterEditForm';
 import { Comment } from '../Comments/Comment'
 
@@ -11,6 +11,16 @@ export const CharacterDetails = () => {
     const [character, setCharacter] = useState([])
     const [formType, setFormType] = useState(null)
     const [comments, setComments] = useState([])
+    const [displaySection, setDisplaySection] = useState('Hide')
+
+    function showComments() {
+        if (displaySection === 'Show') {
+            setDisplaySection('Hide')
+        } else {
+            setDisplaySection('Show')
+
+        }
+    }
 
     useEffect(() => {
         fetch(`http://localhost:3030/jsonstore/characters/${charId}`)
@@ -23,11 +33,11 @@ export const CharacterDetails = () => {
     }, [charId])
 
     useEffect(() => {
-        fetch(`http://localhost:3030/jsonstore/comments/`)
+        fetch(`http://localhost:3030/jsonstore/character-comments/`)
             .then(res => res.json())
             .then(
                 result => {
-                    setComments(result)
+                    setComments(Object.values(result))
                 }
             )
     }, [])
@@ -71,7 +81,7 @@ export const CharacterDetails = () => {
                     </section>
                     <div className='feats'>
                         <ul>
-                            {character.feats?.map(f => <li><GiZeusSword />{f}</li>)}
+                            {character.feats?.map(f => <li key={character.feats.indexOf(f)}><GiZeusSword />{f}</li>)}
                         </ul>
                     </div>
                 </div>
@@ -84,15 +94,21 @@ export const CharacterDetails = () => {
                     </p>
                     <div className={styles['buttons']}>
                         <button onClick={() => userAction("Edit")} className={styles['edit-btn']}><AiTwotoneEdit /> Edit character</button>
-                        <button onClick={() => userAction("Delete")} className={styles['delete-btn']}><AiTwotoneEdit /> Delete character</button>
+                        <button onClick={() => userAction("Delete")} className={styles['delete-btn']}><AiOutlineDelete /> Delete character</button>
                         <button className={styles['add-btn']}><AiOutlineComment />Add Comment</button>
                     </div>
 
                 </div>
                 {formType === "Edit" && <CharacterEditForm onClose={closeHandler} character={character} setCharacter={setCharacter} />}
             </div>
-            <div className="comments-section">
-                {comments.map(comment => <Comment commentData={comment} />)}
+
+            <header className={styles['comments-header']}>
+                <h1 onClick={showComments}>{displaySection} comments section</h1>
+            </header>
+
+            <div style={displaySection == "Show" ? { display: 'none' } : { display: 'block' }}>
+
+                {comments.map(comment => <Comment key={comment.id} comment={comment} />)}
             </div>
         </>
     )

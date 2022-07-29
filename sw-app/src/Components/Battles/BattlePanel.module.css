@@ -26,6 +26,10 @@
     right: -65px;
 }
 
+.battle img {
+    width: 100%;
+}
+
 .battle a {
     text-decoration: none;
     position: absolute;

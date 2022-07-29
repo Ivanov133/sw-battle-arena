@@ -1,0 +1,54 @@
+.comment-container {
+    background-color: rgba(255, 255, 255, 0.55);
+    box-shadow: 0px 0px 16px 3px rgba(38,38,38,0.88);
+/*     border: 4px solid black;
+ */    border-radius: 2px;
+    margin-bottom: 20px;
+    height: 280px;
+    width: 90%;
+    display: flex;
+    margin: 15px auto;
+}
+
+.profile-section {
+    display: inline-block;
+    width: 25%;
+    margin: auto;
+}
+
+.profile-section .picture {
+    margin: auto;
+    width: 150px;
+    height: 170px;
+}
+
+
+.comment-section {
+    display: inline-block;
+    width: 75%;
+    border: 6px solid gray;
+    margin: 10px;
+    padding: 15px;
+}
+
+.profile-section p {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.username {
+
+}
+
+.rank {
+
+}
+
+.moto {
+
+}
+
+.comment-text {
+
+}

@@ -16,7 +16,7 @@ export const CharacterEditForm = ({
         force: character.force,
         dueling: character.dueling,
         fullPower: character.fullPower,
-        shortImg: character.img,
+        shortImg: character.shortImg,
         fullImg: character.fullImg,
         quote: character.quote,
         author: character.author,

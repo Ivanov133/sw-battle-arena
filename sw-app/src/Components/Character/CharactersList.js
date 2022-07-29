@@ -1,6 +1,6 @@
 import { Character } from "./Character"
 import { useState, useEffect } from "react"
-import styles from "./CharacterList.module.css"
+import styles from "./CharactersList.module.css"
 import { BattlePanel } from '../Battles/BattlePanel'
 import { CharacterCreateForm } from "../Forms/CharacterCreateForm"
 import { getAllCharacters } from '../../services/characterService'

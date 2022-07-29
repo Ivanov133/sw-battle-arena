@@ -29,6 +29,10 @@
     right: -15px;
 }
 
+.add img {
+    width: 100%;
+}
+
 .add :hover {
     background-color: hsl(68, 100%, 57%, 0.7);
     box-shadow: 0px 0px 30px 12px #E1FF24;

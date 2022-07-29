@@ -11,7 +11,7 @@ export const CharacterCreateForm = ({
     const [values, setValues] = useState({
         name: '',
         description: '',
-        allegiance: '',
+        allegiance: 'Dark Side',
         force: '',
         dueling: '',
         fullPower: '',
@@ -47,13 +47,13 @@ export const CharacterCreateForm = ({
         e.preventDefault()
 
         for (let key in errors) {
-            if (errors[key] == "unfilled") {
+            if (errors[key]) {
                 return alert("Not all input fields are valid!");
             }
         }
 
         for (let key in values) {
-            if (!values[key]) {
+            if (values[key] === '') {
                 return alert("All fields are mandatory");
             }
         }
