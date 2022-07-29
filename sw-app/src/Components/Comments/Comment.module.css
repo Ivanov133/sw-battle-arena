@@ -1,8 +1,7 @@
 .comment-container {
     background-color: rgba(255, 255, 255, 0.55);
-    box-shadow: 0px 0px 16px 3px rgba(38,38,38,0.88);
-/*     border: 4px solid black;
- */    border-radius: 2px;
+    box-shadow: 0px 0px 16px 3px rgba(38, 38, 38, 0.88);
+    border-radius: 2px;
     margin-bottom: 20px;
     height: 280px;
     width: 90%;
@@ -11,23 +10,36 @@
 }
 
 .profile-section {
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 25%;
-    margin: auto;
 }
 
 .profile-section .picture {
-    margin: auto;
-    width: 150px;
+    width: 100%;
     height: 170px;
+    border-top: 3px solid black;
+    border-bottom: 3px solid black;
+
+
 }
 
 
 .comment-section {
     display: inline-block;
     width: 75%;
-    border: 6px solid gray;
-    margin: 10px;
+    border: 6px solid rgb(0, 0, 0, 0.65);
+}
+
+.comment-section hr {
+    border: none;
+    border-top: 5px solid black;
+    width: 100%;
+    margin-top: 35px;
+}
+
+.comment-text {
     padding: 15px;
 }
 
@@ -38,17 +50,46 @@
 }
 
 .username {
-
-}
-
-.rank {
-
+    font-weight: 900;
 }
 
 .moto {
-
+    font-style: italic;
+    font-size: 10px;
 }
 
-.comment-text {
 
+.light-side {
+    color: rgb(65, 65, 246);
+}
+
+.dark-side {
+    color: red;
+}
+
+.buttons-wrapper {
+    position: relative;
+}
+
+.buttons-wrapper button {
+    position: absolute;
+    width: 65px;
+    border: 0px;
+    border-radius: 5px;
+    padding: 4px;
+    cursor: pointer;
+}
+
+.edit-comment-btn {
+    top: 6px;
+    right: 15px;
+    background-color: rgb(255, 165, 0, 0.75);
+    color: white;
+}
+
+.del-comment-btn {
+    top: 6px;
+    right: 85px;
+    background-color: rgb(255, 0, 0, 0.75);
+    color: white;
 }

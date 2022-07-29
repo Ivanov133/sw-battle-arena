@@ -1,8 +1,11 @@
 import { useLocation } from "react-router-dom"
-import { Character } from "../Character/Character";
+
+
+
 export const BattleCreate = () => {
     const location = useLocation();
-    const { characters } = location.state;
+    const { data } = location.state;
+    const [character1, character2] = data
 
     return (
         <div className="battle-create">
@@ -10,7 +13,7 @@ export const BattleCreate = () => {
 
             </section>
             <section className="character-statistics">
-                
+
             </section>
         </div>
     )

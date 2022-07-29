@@ -6,14 +6,17 @@
             "user_id": "5165a1sdawda",
             "username": "Pesho",
             "picture": "https://i.ibb.co/wCqNGRk/short-nihilus.jpg",
-            "rank": "Jedi Master",
+            "rank": {
+                "allegiance": "Light Side",
+                "title": "Jedi Master",
+                "rating": "5"
+            },
             "comments_total": "51",
             "moto": "Fear is my ally"
         },
         "text": " My first comment on sw-appMy first comment on sw-appMy first comment on sw-appMy first comment on sw-appMy first comment on sw-appMy first comment on sw-appMy first comment on sw-appMy first comment on sw-app",
         "likes": "15",
         "dislikes": "1"
-
     },
     "comment_2": {
         "_id": "comment_2",
@@ -22,14 +25,16 @@
             "user_id": "5165a1sdawda",
             "username": "Pesho",
             "picture": "https://i.ibb.co/wCqNGRk/short-nihilus.jpg",
-            "rank": "Jedi Master",
-            "comments_total": "51",
+            "rank": {
+                "allegiance": "Light Side",
+                "title": "Jedi Master",
+                "rating": "5"
+            },        "comments_total": "51",
             "moto": "Fear is my ally"
-        },        "text": "My second comment on sw-app",
+        },
+        "text": "My second comment on sw-app",
         "likes": "5",
         "dislikes": "1"
-
-
     },
     "comment_3": {
         "_id": "comment_3",
@@ -38,12 +43,15 @@
             "user_id": "5165a1sdawda",
             "username": "Pesho",
             "picture": "https://i.ibb.co/wCqNGRk/short-nihilus.jpg",
-            "rank": "Jedi Master",
-            "comments_total": "51",
+            "rank": {
+                "allegiance": "Light Side",
+                "title": "Jedi Master",
+                "rating": "5"
+            },         "comments_total": "51",
             "moto": "Fear is my ally"
-        },        "text": "My third comment on sw-app",
+        },
+        "text": "My third comment on sw-app",
         "likes": "3",
         "dislikes": "1"
-
     }
 }
