@@ -1,5 +1,5 @@
 import styles from '../Basic/navbar.module.css'
-import { GiSwordTie, GiExplodingPlanet, GiRobe, GiRun, GiOverlordHelm } from "react-icons/gi";
+import { GiSwordTie, GiRobe, GiRun, GiOverlordHelm } from "react-icons/gi";
 import { NavLink } from 'react-router-dom'
 
 export const Navbar = () => {

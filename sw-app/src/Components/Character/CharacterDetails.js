@@ -5,6 +5,7 @@ import { GiZeusSword } from "react-icons/gi";
 import { AiOutlineComment, AiTwotoneEdit, AiOutlineDelete } from "react-icons/ai";
 import { CharacterEditForm } from '../Forms/CharacterEditForm';
 import { Comment } from '../Comments/Comment'
+import { getCharacter } from '../../services/characterService';
 
 export const CharacterDetails = () => {
     const { charId } = useParams()
@@ -23,8 +24,7 @@ export const CharacterDetails = () => {
     }
 
     useEffect(() => {
-        fetch(`http://localhost:3030/jsonstore/characters/${charId}`)
-            .then(res => res.json())
+        getCharacter(charId)
             .then(
                 result => {
                     setCharacter(result)
@@ -106,7 +106,7 @@ export const CharacterDetails = () => {
                 <h1 onClick={showComments}>{displaySection} comments section</h1>
             </header>
 
-            <div style={displaySection == "Show" ? { display: 'none' } : { display: 'block' }}>
+            <div style={displaySection === "Show" ? { display: 'none' } : { display: 'block' }}>
 
                 {comments.map(comment => <Comment key={comment.id} comment={comment} />)}
             </div>

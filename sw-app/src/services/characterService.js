@@ -5,6 +5,14 @@ export async function getAllCharacters() {
     return result
 }
 
+export async function getCharacter(id) {
+    const response = await fetch(`http://localhost:3030/jsonstore/characters/${id}`)
+    const result = await response.json()
+
+    return result
+
+}
+
 export async function createCharacter(data) {
     const response = await fetch("http://localhost:3030/jsonstore/characters", {
         method: 'POST',

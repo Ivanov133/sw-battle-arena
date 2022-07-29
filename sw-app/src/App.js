@@ -29,7 +29,7 @@ function App() {
                     <Route path="/" element={<h1>Home Page</h1>} />
                     <Route path="/characters" element={<CharacterList setCharacters={setCharacters} characters={characters} />} />
                     <Route path="/characters/:charId" element={<CharacterDetails />} />
-                    <Route path="/battle-create" element={<BattleCreate />} />
+                    <Route path="/battle-create/:characterIds" element={<BattleCreate />} />
                 </Routes>
                 <Footer></Footer>
             </CharactersContext.Provider >
