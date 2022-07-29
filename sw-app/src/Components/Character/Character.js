@@ -8,11 +8,17 @@ export const Character = ({
 }) => {
 
     return (
-        <div onClick={clickEv} className={
+        <div className={
             character.allegiance === 'Dark Side'
                 ? `${styles['short-card']} ${styles['dark-side']}`
                 : `${styles['short-card']} ${styles['light-side']}`
         }>
+            {clickEv
+                ? <div onClick={clickEv} className={styles['character-selector']}>
+                    <img src="https://i.ibb.co/zS4qNwZ/transparent-sword-icon-vikings-icon-swords-icon-60bc20b3a15aa4-1746426716229418756609.png" alt="" />
+
+                </div>
+                : null}
             <img src={character.shortImg} alt="" />
             <h2>{character.name}</h2>
             <section className={styles['stats-bar']}>

@@ -47,7 +47,7 @@ export const CharacterList = () => {
                 {/* Character List*/}
 
                 <h1>Characters Catalog</h1>
-                {characters.map(character => <Character setCharacters={setCharacters} clickEv={ev => selectCharacters(ev, character)} key={character._id} character={character} />)}
+                {characters.map(character => <Character clickEv={ev => selectCharacters(ev, character)} key={character._id} character={character} />)}
 
                 {/* Charactet create form*/}
                 {formType === "Create" && <CharacterCreateForm setCharacters={setCharacters} onClose={closeHandler} />}

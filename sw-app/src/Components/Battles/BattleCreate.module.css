@@ -1,0 +1,64 @@
+.battle-create {
+    background-image: url('../../../public/static/images/battle-background.jpg');
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.character-panel {
+    display: flex;
+    justify-content: center;
+}
+
+.battle-odds-panel {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin-top: 15px;
+}
+
+.battle-odds-panel span {
+    color: white;
+    display: flex;
+    position: absolute;
+    top: -11px;
+}
+.battle-odds-panel  h4 {
+    color: white;
+    position: absolute;
+    top: -38px;
+}
+.dueling-bar1 {
+    margin-top: 4px;
+    display: inline-block;
+    border: 8px solid rgb(129, 0, 194);
+    background-color: rgb(129, 0, 194);
+    box-shadow: 0px 0px 19px 8px rgb(145, 0, 255, 0.5);
+
+    height: 0;
+    position: relative;
+}
+
+.dueling-bar2 {
+    margin-top: 4px;
+    display: inline-block;
+    border: 8px solid rgb(194, 0, 0);
+    background-color: rgb(194, 0, 0);
+    box-shadow: 0px 0px 19px 8px rgb(194, 0, 0);
+    border-bottom-right-radius: 7px;
+    border-top-right-radius: 7px;
+    height: 0;
+    position: relative;
+}
+
+.dueling-bar p {
+    color: white;
+    position: absolute;
+    top: -12px;
+    right: 10px;
+
+}
+
+.battle-odds-panel img {
+    width: 145px;
+}
