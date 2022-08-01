@@ -65,7 +65,7 @@ export const CharacterDetails = () => {
                             </p>
                         </div>
                         <div >
-                            <img src="https://i.ibb.co/YNGX5SJ/5a32bf7047e2870dc3bf81a5d8c7db1e361c329f-00.jpg" alt="" />
+                            <img src="https://i.ibb.co/yy864NN/5a32bf7047e2870dc3bf81a5d8c7db1e361c329f-00-removebg-preview.png" alt="" />
 
                             <p>Full Power: {character.fullPower}</p>
                         </div>

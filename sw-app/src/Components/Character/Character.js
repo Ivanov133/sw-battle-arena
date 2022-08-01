@@ -14,7 +14,7 @@ export const Character = ({
                 : `${styles['short-card']} ${styles['light-side']}`
         }>
             {clickEv
-                ? <div onClick={clickEv} className={styles['character-selector']}>
+                ? <div title='Select for battle' onClick={clickEv} className={styles['character-selector']}>
                     <img src="https://i.ibb.co/zS4qNwZ/transparent-sword-icon-vikings-icon-swords-icon-60bc20b3a15aa4-1746426716229418756609.png" alt="" />
 
                 </div>

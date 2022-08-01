@@ -1,0 +1,23 @@
+
+.battle-create-form {
+    display: flex;
+    position: absolute;
+    bottom: -200px;
+    width: 100%;
+}
+
+.submit-btn {
+    text-align: center;
+    width: 120px;
+    margin: auto;
+    border: 3px solid rgba(255, 166, 0, 0.544);
+    font-size: 12px;
+    border-radius: 5px;
+    font-weight: 600;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0px 0px 20px 4px #ff9c24;
+    padding: 8px;
+
+}

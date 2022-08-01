@@ -1,80 +1,43 @@
-// Define all user-related functions - log-in, logout, register
+import * as request from "./requester";
 
-/* async function login(email, password) {
-    const response = await post('http://localhost:3030/users/login', { email, password })
+const baseUrl = 'http://localhost:3030'
 
-    const userData = {
-        email: response.email,
-        id: response._id,
-        token: response.accessToken
-    }
+export const login = (email, password) => request.post(`${baseUrl}/users/login`, { email, password })
 
-    sessionStorage.setItem('userData', JSON.stringify(userData))
-    return response
-}
+export const register = (email, password, profileData) => request.post(`${baseUrl}/users/register`, { email, password, profileData })
 
-
-async function register(email, password) {
-    const response = await post('http://localhost:3030/users/register', { email, password })
-
-    const userData = {
-        email: response.email,
-        id: response._id,
-        token: response.accessToken
-    }
-
-    sessionStorage.setItem('userData', JSON.stringify(userData))
-    return response
-
-}
-
-
-async function logout() {
-    get('/users/logout')
-    clearUserData()
-}
-
-
-export {
-    login,
-    logout,
-    register
-} */
-
-
-
-/* export async function onLogin(ev) {
-    ev.preventDefault()
-    console.log('test')
-    const formData = new FormData(ev.target)
-    let email = formData.get('email')
-    let password = formData.get('password')
-
+export const logout = async (accessToken) => {
     try {
-        const res = await fetch('http://localhost:3030/users/login', {
-            method: 'post',
+
+        const response = await fetch(`${baseUrl}/users/logout`, {
             headers: {
-                'Content-type': 'application/json'
-            },
-            body: JSON.stringify({ email, password })
-
+                'X-Authorization': accessToken
+            }
         })
-        if (res.ok != true) {
-            const error = await res.json()
-            throw new Error(error.message)
-        }
 
-        const data = await res.json()
-
-        //store user data in session
-        const loggetUserData = {
-            "email": data.email,
-            "id": data._id,
-            "token": data.accessToken
-        }
-        sessionStorage.setItem('userData', JSON.stringify(loggetUserData))
+        return response
     } catch (error) {
-        alert(error.message)
+        console.log(error);
     }
 
+}
+/* 
+export const getUserDetails = () => request.get(`${baseUrl}/users/`)
+ */
+/* export async function getUserDetails(token) {
+    console.log(token)
+    const response = await fetch(`${baseUrl}/users/me`, {
+            headers: {
+                'content-type': 'application/json',
+                'X-Authorization': token
+            }
+        })
+    
+    const result = await response.json()
+    console.log(result);
+
+    return result
+
 } */
+
+export const createProfile = (data) => request.post(`${baseUrl}/data/profiles`, data)

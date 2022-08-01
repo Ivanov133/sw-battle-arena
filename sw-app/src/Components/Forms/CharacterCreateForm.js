@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import styles from '../Forms/CharacterForm.module.css'
+import styles from '../Forms/CharacterCreateForm.module.css'
 import * as characterService from '../../services/characterService'
 
 
@@ -8,19 +8,19 @@ export const CharacterCreateForm = ({
     setCharacters
 }) => {
 
-    const [values, setValues] = useState({
-        name: '',
-        description: '',
-        allegiance: 'Dark Side',
-        force: '',
-        dueling: '',
-        fullPower: '',
-        shortImg: '',
-        fullImg: '',
-        quote: '',
-        author: '',
-        feats: '',
-    })
+        const [values, setValues] = useState({
+            name: '',
+            description: '',
+            allegiance: 'Dark Side',
+            force: '',
+            dueling: '',
+            fullPower: '',
+            shortImg: 'https://i.ibb.co/16g4z2Z/actor-darth-revan-292007-large.jpg',
+            fullImg: 'https://i.ibb.co/PNC3LF2/41744707f1748ace85d7964dc394aeb7.jpg',
+            quote: '',
+            author: '',
+            feats: '',
+        })
 
     const [errors, setErrors] = useState({
         name: false,
@@ -149,7 +149,7 @@ export const CharacterCreateForm = ({
                 <input onBlur={(e) => validatePositiveNum(e, 1)} onChange={changeHandler} value={values.fullPower} placeholder='Takes into account all the above powers and feats (1-100)' id="fullPower" type="number" name="fullPower" />
                 {errors.fullPower && <p>Full power must be in range 1-100</p>}
 
-                <label htmlFor="shortImg">Card image</label>
+                <label htmlFor="shortImg">Paste URL of your card image or keep the default</label>
                 <input
                     placeholder='URL of the image - will be displayed in the catalog section'
                     id="shortImg"
@@ -158,7 +158,7 @@ export const CharacterCreateForm = ({
                     onChange={changeHandler}
                     value={values.shortImg} />
 
-                <label htmlFor="fullImg">Full Image</label>
+                <label htmlFor="fullImg">Paste URL of your full image or keep default</label>
                 <input
                     placeholder='URL of the image - will be displayed in the details section'
                     id="fullImg"

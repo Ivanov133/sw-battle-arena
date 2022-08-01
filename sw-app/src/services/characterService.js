@@ -1,3 +1,7 @@
+import { request } from "./requester"
+
+const baseUrl = 'http://localhost:3030/jsonstore/characters'
+
 export async function getAllCharacters() {
     const response = await fetch(`http://localhost:3030/jsonstore/characters`)
     const result = await response.json()

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import styles from '../Forms/CharacterForm.module.css'
+import styles from '../Forms/CharacterCreateForm.module.css'
 import * as characterService from '../../services/characterService'
 
 

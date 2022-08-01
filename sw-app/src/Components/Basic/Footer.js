@@ -13,7 +13,6 @@ export const Footer = () => {
             <ul>
                 <li><NavLink to="/" className={setStyleColor}>About Us</NavLink></li>
                 <li><NavLink to="/characters" className={setStyleColor}>User Guide</NavLink></li>
-
             </ul>
         </footer>
     )

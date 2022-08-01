@@ -5,36 +5,52 @@ import { Footer } from './Components/Basic/Footer';
 import { Routes, Route } from 'react-router-dom'
 import styles from './App.module.css'
 import { BattleCreate } from './Components/Battles/BattleCreate';
-import { CharactersContext } from './contexts/charactersContext'
-import { useState, useEffect } from 'react';
-import { getAllCharacters } from './services/characterService'
+import { useLocalStorage } from './hooks/useLocalStorage';
+import { AuthContext } from './contexts/authContext';
+import { Login } from './Components/User/Login';
+import { Register } from './Components/User/Register';
+import { Logout } from './Components/User/Logout';
+import { Home } from './Components/Basic/Home';
 
 
 function App() {
-    const [characters, setCharacters] = useState([])
-    useEffect(() => {
-        getAllCharacters()
-            .then(result => {
-                setCharacters(Object.values(result))
-            })
-    }, []);
+    /*     const [characters, setCharacters] = useState([])
+        useEffect(() => {
+            getAllCharacters()
+                .then(result => {
+                    setCharacters(Object.values(result))
+                })
+        }, []);
+     */
 
+    const [user, setUser] = useLocalStorage('auth', {})
+
+    const userLogin = (authData) => {
+        setUser(authData)
+    }
+
+    const userLogout = () => {
+        setUser({})
+    }
 
     return (
-
-        <div style={styles} className="App">
-            <CharactersContext.Provider value={{ characters, setCharacters }}>
+        <AuthContext.Provider value={{ user, userLogin, userLogout }}>
+            <div style={styles} className="App">
                 <Navbar />
                 <Routes>
-                    <Route path="/" element={<h1>Home Page</h1>} />
-                    <Route path="/characters" element={<CharacterList setCharacters={setCharacters} characters={characters} />} />
+                    <Route path="/" element={<Home />} />
+                    <Route path="/characters" element={<CharacterList /* setCharacters={setCharacters} characters={characters}  */ />} />
                     <Route path="/characters/:charId" element={<CharacterDetails />} />
                     <Route path="/battle-create/:characterIds" element={<BattleCreate />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/logout" element={<Logout />} />
+                    <Route path="/register" element={<Register />} />
+
                 </Routes>
                 <Footer></Footer>
-            </CharactersContext.Provider >
 
-        </div>
+            </div>
+        </AuthContext.Provider>
 
     );
 }
