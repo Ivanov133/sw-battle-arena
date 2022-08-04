@@ -11,7 +11,6 @@ export const Home = () => {
             })
     }) */
             
-    console.log(user._id);
     return (
         <button>CLICK</button>
     )

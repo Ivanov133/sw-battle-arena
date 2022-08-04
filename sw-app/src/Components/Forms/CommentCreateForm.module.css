@@ -1,0 +1,54 @@
+.form-comment {
+    position:fixed;
+    padding:0;
+    margin:0;
+
+    top:0;
+    left:0;
+
+    width: 100%;
+    height: 30%;
+    background:rgba(7, 7, 7, 0.8);
+
+    z-index: 99;
+}
+
+.form-comment form {
+    display: flex;
+    flex-direction: column;
+    width: 65%;
+    margin: auto;
+    padding: 25px;
+    border-radius: 5px;
+    background-color: rgba(40, 40, 40, 0.8);
+    position: relative;
+    align-items: center;
+}
+
+
+
+.form-comment img {
+    width: 55px;
+    position: absolute;
+    top: 0;
+    right: 210px;
+    z-index: 99;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.form-comment p {
+    color: red;
+    font-size: 12px;
+}
+
+.submit-comment-btn {
+    width: 130px;
+    margin-top: 15px;
+    cursor: pointer;
+    background-color: rgb(18, 200, 18);
+    padding: 5px;
+    border: 3px solid rgba(0, 0, 0, 0.866);
+    border-radius: 5px;
+    font-size: 15px;
+}

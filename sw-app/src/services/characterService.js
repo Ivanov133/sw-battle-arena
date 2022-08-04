@@ -1,23 +1,20 @@
-import { request } from "./requester"
+import { post, put, get } from "./requester"
 
-const baseUrl = 'http://localhost:3030/jsonstore/characters'
+export const getAllCharacters = () => get('http://localhost:3030/data/characters')
 
-export async function getAllCharacters() {
-    const response = await fetch(`http://localhost:3030/jsonstore/characters`)
+/* export async function getCharacter(id) {
+    const response = await fetch(`http://localhost:3030/data/characters/${id}`)
     const result = await response.json()
 
-    return result
-}
+    return result */
+/* } */
 
-export async function getCharacter(id) {
-    const response = await fetch(`http://localhost:3030/jsonstore/characters/${id}`)
-    const result = await response.json()
+export const getCharacter = (id) => get(`http://localhost:3030/data/characters/${id}`)
 
-    return result
 
-}
+export const editCharacter = (data, id) => put(`http://localhost:3030/data/characters/${id}`, data)
 
-export async function createCharacter(data) {
+/* export async function createCharacter(data) {
     const response = await fetch("http://localhost:3030/jsonstore/characters", {
         method: 'POST',
         headers: {
@@ -30,8 +27,11 @@ export async function createCharacter(data) {
 
     return result;
 }
+ */
 
-export async function editCharacter(data, id) {
+export const createCharacter = (data) => post(`http://localhost:3030/data/characters`, data)
+
+/* export async function editCharacter(data, id) {
     const response = await fetch(`http://localhost:3030/jsonstore/characters/${id}`, {
         method: 'PUT',
         headers: {
@@ -43,4 +43,4 @@ export async function editCharacter(data, id) {
     const result = await response.json();
 
     return result;
-}
+} */

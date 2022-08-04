@@ -102,20 +102,3 @@
     background-color: rgb(255, 72, 0);
 }
 
-.comments-header {
-    width: 400px;
-    margin: 15px auto;
-}
-
-.comments-header h1 {
-    text-align: center;
-    margin: auto;
-    color: black;
-    cursor: pointer;
-    
-}
-
-.comments-header :hover {
-    color: white;
-    text-shadow: 0px 0px 20px #FFCC00;
-}

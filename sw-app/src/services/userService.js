@@ -41,3 +41,5 @@ export const getUserDetails = () => request.get(`${baseUrl}/users/`)
 } */
 
 export const createProfile = (data) => request.post(`${baseUrl}/data/profiles`, data)
+
+export const getProfiles = () => request.get(`${baseUrl}/data/profiles/`)

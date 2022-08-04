@@ -62,6 +62,7 @@ export const CharacterEditForm = ({
         let data = Object.fromEntries(new FormData(e.target.parentNode))
         data.feats = data.feats.split(",")
 
+
         characterService.editCharacter(data, character._id)
             .then(character => {
                 setCharacter(character);

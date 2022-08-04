@@ -35,15 +35,15 @@ export const Register = () => {
             repass,
             moto,
             profileImg,
-            allegiance,
+            title,
             username,
         } = Object.fromEntries(new FormData(ev.target.parentNode))
 
         const profileData = {
-            "ProfileData": {
+            "profileData": {
                 moto,
                 profileImg,
-                allegiance,
+                title,
                 username,
             }
         }
@@ -85,11 +85,9 @@ export const Register = () => {
 
                 </div>
 
-                <label htmlFor="allegiance">Allegiance</label>
-                <select onChange={changeHandler} value={values.allegiance} id="allegiance" name="allegiance">
-                    <option value="Dark Side">Dark Side</option>
-                    <option value="Light Side">Light Side</option>
-                </select>
+                <label htmlFor="title">Title</label>
+                <input onChange={changeHandler} value={values.title} id="title" name="title" required/>
+                
 
                 <label htmlFor="moto">Moto</label>
                 <input onChange={changeHandler} value={values.moto} type="text" id="moto" name="moto" required />

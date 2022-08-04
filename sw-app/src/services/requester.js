@@ -24,9 +24,18 @@ export const request = async (method, url, data) => {
             })
         }
         const response = await buildRequest
+
+        if (response.ok != true) {
+            //check for server crash
+            if (response.status == 403) {
+                localStorage.removeItem('auth')
+            }
+
+            const error = await response.json()
+            throw new Error(error.message)
+        }
         const result = await response.json()
 
-        console.log(result);
         return result
 
     } catch (error) {
@@ -36,6 +45,5 @@ export const request = async (method, url, data) => {
 
 export const get = request.bind({}, 'GET')
 export const post = request.bind({}, 'POST')
-export const put = request.bind({}, 'PATCH')
-export const patch = request.bind({}, 'PUT')
+export const put = request.bind({}, 'PUT')
 export const del = request.bind({}, 'DELETE')

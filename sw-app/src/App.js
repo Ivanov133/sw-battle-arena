@@ -11,6 +11,10 @@ import { Login } from './Components/User/Login';
 import { Register } from './Components/User/Register';
 import { Logout } from './Components/User/Logout';
 import { Home } from './Components/Basic/Home';
+import { Profile } from './Components/User/Profile'
+import { useEffect } from 'react';
+import { login } from './services/userService';
+import { initialDataLoad } from './helpers/prefetchData';
 
 
 function App() {
@@ -23,7 +27,17 @@ function App() {
         }, []);
      */
 
+
     const [user, setUser] = useLocalStorage('auth', {})
+
+    // This is only used to populate data in the app
+/*     useEffect(() => {
+        login('admin@abv.bg', 'admin')
+        .then(authData => {
+            userLogin(authData)
+            
+        })
+    }, []) */
 
     const userLogin = (authData) => {
         setUser(authData)
@@ -32,7 +46,7 @@ function App() {
     const userLogout = () => {
         setUser({})
     }
-
+    
     return (
         <AuthContext.Provider value={{ user, userLogin, userLogout }}>
             <div style={styles} className="App">
@@ -45,6 +59,7 @@ function App() {
                     <Route path="/login" element={<Login />} />
                     <Route path="/logout" element={<Logout />} />
                     <Route path="/register" element={<Register />} />
+                    <Route path="/profile/:userId" element={<Profile />} />
 
                 </Routes>
                 <Footer></Footer>

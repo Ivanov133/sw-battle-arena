@@ -1,27 +1,20 @@
 import styles from '../Character/CharacterDetails.module.css'
 import { useParams } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { GiZeusSword } from "react-icons/gi";
 import { AiOutlineComment, AiTwotoneEdit, AiOutlineDelete } from "react-icons/ai";
 import { CharacterEditForm } from '../Forms/CharacterEditForm';
-import { Comment } from '../Comments/Comment'
 import { getCharacter } from '../../services/characterService';
+import { AuthContext } from '../../contexts/authContext'
+import { CharacterCommentsSection } from '../Comments/CharacterCommentsSection';
+import { CommentCreateForm } from '../Forms/CommentCreateForm';
+
 
 export const CharacterDetails = () => {
+    const { user } = useContext(AuthContext)
     const { charId } = useParams()
     const [character, setCharacter] = useState([])
     const [formType, setFormType] = useState(null)
-    const [comments, setComments] = useState([])
-    const [displaySection, setDisplaySection] = useState('Hide')
-
-    function showComments() {
-        if (displaySection === 'Show') {
-            setDisplaySection('Hide')
-        } else {
-            setDisplaySection('Show')
-
-        }
-    }
 
     useEffect(() => {
         getCharacter(charId)
@@ -31,16 +24,6 @@ export const CharacterDetails = () => {
                 }
             )
     }, [charId])
-
-    useEffect(() => {
-        fetch(`http://localhost:3030/jsonstore/character-comments/`)
-            .then(res => res.json())
-            .then(
-                result => {
-                    setComments(Object.values(result))
-                }
-            )
-    }, [])
 
     function userAction(action) {
         setFormType(action)
@@ -80,9 +63,9 @@ export const CharacterDetails = () => {
 
                     </section>
                     <div className='feats'>
-                        <ul>
-                            {character.feats?.map(f => <li key={character.feats.indexOf(f)}><GiZeusSword />{f}</li>)}
-                        </ul>
+                        <div>
+                            {character.feats?.map(f => <p key={character.feats.indexOf(f)}><GiZeusSword />{f}</p>)}
+                        </div>
                     </div>
                 </div>
                 <div className={styles['content']}>
@@ -93,23 +76,24 @@ export const CharacterDetails = () => {
                         {character.description}
                     </p>
                     <div className={styles['buttons']}>
-                        <button onClick={() => userAction("Edit")} className={styles['edit-btn']}><AiTwotoneEdit /> Edit character</button>
-                        <button onClick={() => userAction("Delete")} className={styles['delete-btn']}><AiOutlineDelete /> Delete character</button>
-                        <button className={styles['add-btn']}><AiOutlineComment />Add Comment</button>
+                        {character._ownerId === user._id
+                            ? <>
+                                <button onClick={() => userAction("EditCharacter")} className={styles['edit-btn']}><AiTwotoneEdit /> Edit character</button>
+                                <button onClick={() => userAction("DeleteCharacter")} className={styles['delete-btn']}><AiOutlineDelete /> Delete character</button>
+                            </>
+                            : null}
+                        {user.email 
+                            ?
+                            <button onClick={() => userAction("PostComment")} className={styles['add-btn']}><AiOutlineComment />Add Comment</button>
+                            : null}
                     </div>
 
                 </div>
-                {formType === "Edit" && <CharacterEditForm onClose={closeHandler} character={character} setCharacter={setCharacter} />}
+                {formType === "EditCharacter" && <CharacterEditForm onClose={closeHandler} character={character} setCharacter={setCharacter} />}
+
             </div>
 
-            <header className={styles['comments-header']}>
-                <h1 onClick={showComments}>{displaySection} comments section</h1>
-            </header>
-
-            <div style={displaySection === "Show" ? { display: 'none' } : { display: 'block' }}>
-
-                {comments.map(comment => <Comment key={comment.id} comment={comment} />)}
-            </div>
+            <CharacterCommentsSection userAction={userAction} formType={formType} closeHandler={closeHandler} characterId={character._id} />
         </>
     )
 }

@@ -28,7 +28,7 @@ export const Navbar = () => {
                 </li>
                 {user.email
                     ? <>
-                        <li><NavLink to="/" className={setStyleColor}><GiOverlordHelm />My Profile</NavLink></li>
+                        <li><NavLink to={`/profile/${user._id}`} className={setStyleColor}><GiOverlordHelm />My Profile</NavLink></li>
                         <li><NavLink to="/logout" className={setStyleColor}><GiRun />Logout</NavLink></li>
                     </>
                     : <>
