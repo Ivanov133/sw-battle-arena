@@ -37,7 +37,7 @@ export const Login = () => {
     return (
         <div className={styles["form-wrapper"]}>
             <form>
-                <label htmlFor="email">Username</label>
+                <label htmlFor="email">Email</label>
                 <input onChange={changeHandler} value={values.email} type="text" id="email" name="email" required />
                 <label htmlFor="password">Password</label>
                 <input onChange={changeHandler} value={values.password} type="password" id="password" name="password" required />

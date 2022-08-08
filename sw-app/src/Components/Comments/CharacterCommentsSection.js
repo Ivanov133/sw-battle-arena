@@ -1,29 +1,18 @@
-import { useState, useEffect } from "react"
+import {  useState } from "react"
 import { Comment } from "./Comment"
 import styles from './CharacterCommentsSection.module.css'
 import { CommentCreateForm } from "../Forms/CommentCreateForm"
-import { getAllCharacterComments } from "../../services/commentsService"
-import { useParams } from "react-router-dom"
 
 export const CharacterCommentsSection = ({
     closeHandler,
     formType,
     userAction,
+    comments,
+    setComments,
+    
 }) => {
-    const [comments, setComments] = useState([])
     const [displaySection, setDisplaySection] = useState('Hide')
-    const {charId} = useParams()
-    console.log(comments.length);
-
-    useEffect(() => {
-        getAllCharacterComments()
-            .then(
-                result => {
-                    let characterComments = result.filter(x => x.characterId == charId)
-                    setComments(characterComments)
-                }
-            )
-    }, [])
+    console.log(formType);
 
     function showComments() {
         if (displaySection === 'Show') {
@@ -40,18 +29,23 @@ export const CharacterCommentsSection = ({
                 <h1 onClick={showComments}>{displaySection} comments section</h1>
             </header>
             <div style={displaySection === "Show" ? { display: 'none' } : { display: 'block' }}>
-                {comments.length > 0
-                ? 
-                comments.map(comment => <Comment 
-                    key={comment._id} 
-                    comment={comment} 
-                    formType={formType} 
-                    userAction={userAction} 
-                    onClose={closeHandler}
-                    setComments={setComments} />)
-            : <p className={styles["info-msg"]}>No comments available for this character</p>}
+                {Array.isArray(comments)
+                    ?
+                    comments.map(comment => <Comment
+                        key={comment._id}
+                        comment={comment}
+                        type={'character'}
+                        formType={formType}
+                        userAction={userAction}
+                        setComments={setComments}
+                        onClose={closeHandler}
+                    />)
+                    : <p className={styles["info-msg"]}>No comments available for this character</p>}
             </div>
-            {formType === "PostComment" && <CommentCreateForm setComments={setComments} onClose={closeHandler} />}
+            {formType === "PostComment" && <CommentCreateForm
+                onClose={closeHandler}
+                setComments={setComments}
+            />}
         </div>
     )
 }

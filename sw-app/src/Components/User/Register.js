@@ -10,7 +10,7 @@ export const Register = () => {
         password: '',
         repass: '',
         username: '',
-        allegiance: '',
+        title: '',
         moto: '',
         profileImg: 'https://i.ibb.co/p380hYQ/1870286df48feb862c26e7437707683d.jpg',
     })
@@ -79,12 +79,6 @@ export const Register = () => {
                 <label htmlFor="profileImg">Profile picture URL:</label>
                 <input onChange={changeHandler} value={values.profileImg} type="text" id="profileImg" name="profileImg" required />
 
-                <div className={styles['profile-img-preview']}>
-                    <img src={values.profileImg} alt="" />
-                    <h4>Profile img view</h4>
-
-                </div>
-
                 <label htmlFor="title">Title</label>
                 <input onChange={changeHandler} value={values.title} id="title" name="title" required/>
                 
@@ -95,6 +89,11 @@ export const Register = () => {
                 <button onClick={(ev) => onSubmit(ev)}>Register</button>
 
             </form >
+            <div className={styles['profile-img-preview']}>
+                    <img src={values.profileImg} alt="" />
+                    <h4>Profile image preview</h4>
+
+                </div>
         </div >
 
     )

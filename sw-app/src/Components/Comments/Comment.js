@@ -1,33 +1,30 @@
 import styles from '../Comments/Comment.module.css'
-import { GiRoundStar } from "react-icons/gi";
-import { useContext, useEffect, useState } from 'react';
-import { getProfiles } from '../../services/userService';
+import { useContext } from 'react';
 import { AuthContext } from '../../contexts/authContext';
-import { CharacterEditForm } from '../Forms/CharacterEditForm';
-import { CommentEditForm } from '../Forms/CommentEditForm';
+import { deleteBattleComment, deleteCharacterComment } from '../../services/commentsService';
+import { Link } from 'react-router-dom'
 
 
 export const Comment = ({
     comment,
     userAction,
-    formType,
-    onClose,
-    setComments
-
+    type,
+    setComments,
 }) => {
-    /*     const [profileData, setProfileData] = useState({})
-        const { user } = useContext(AuthContext)
-        console.log(user);
-    
-        useEffect(() => {
-            getProfiles()
-                .then(profile => {
-                    setProfileData(profile.map(p => p._ownerId === user._id))
-                }
-                )
-        }) */
 
     const { user } = useContext(AuthContext)
+
+    const deleteHandler = async (commentId) => {
+        if (window.confirm('Are you sure you want to delete your comment?')) {
+            if (type === 'character') {
+                await deleteCharacterComment(commentId)
+            } else if (type === 'battle') {
+                await deleteBattleComment(commentId)
+            }
+            setComments(state => state.filter(x => x._id !== commentId))
+        }
+
+    }
 
     return (
         <>
@@ -35,12 +32,6 @@ export const Comment = ({
                 <section className={styles["profile-section"]}>
                     <p className={styles["username"]} >{comment.profileData?.username}</p>
                     <img className={styles["picture"]} src={comment.profileData?.profileImg} alt="" />
-                    {/* <div className={styles["rank-stars"]}>
-                        {comment.user.rank.allegiance === "Light Side"
-                            ? Array(5).fill(<GiRoundStar className={styles["light-side"]} />)
-                            : Array(5).fill(<GiRoundStar className={styles["dark-side"]} />)
-                        }
-                    </div> */}
                     <p className={styles["rank"]}>Rank: {comment.profileData?.title}</p>
                     <p className={styles["moto"]}>"{comment.profileData?.moto}"</p>
                 </section>
@@ -48,14 +39,11 @@ export const Comment = ({
                     <div className={styles["buttons-wrapper"]}>
                         {typeof user.email !== 'undefined' ? <> {
                             user._id === comment._ownerId ? <>
-                                <button onClick={() => userAction("EditComment")} className={styles["edit-comment-btn"]}>Edit</button>
-                                <button onClick={() => userAction("DeleteComment")} className={styles["del-comment-btn"]}>Delete</button>
+                                <button onClick={() => deleteHandler(comment._id)} className={styles["del-comment-btn"]}>Delete</button>
+                                <Link className={styles['edit-comment-btn']} onClick={() => userAction("EditComment")} to={`${comment._id}`}>Edit Comment</Link>
                             </>
                                 : null}</>
                             : null}
-
-                        {formType === "EditComment" && <CommentEditForm setComments={setComments} onClose={onClose} comment={comment} />}
-
                     </div>
                     <hr />
                     <p className={styles["comment-text"]}>{comment.content}</p>

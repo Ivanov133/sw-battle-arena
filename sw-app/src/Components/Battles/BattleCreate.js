@@ -11,7 +11,6 @@ export const BattleCreate = () => {
     const [character1, setCharacter1] = useState('')
     const [character2, setCharacter2] = useState('')
 
-
     useEffect(() => {
         getCharacter(character1_id)
             .then(result =>
@@ -26,11 +25,10 @@ export const BattleCreate = () => {
             )
     }, [character2_id])
 
-
     return (
         <>
             <BattleDetails character1={character1} character2={character2} />
-            <BattleCreateForm />
+            <BattleCreateForm character1={character1} character2={character2} />
         </>
     )
 }

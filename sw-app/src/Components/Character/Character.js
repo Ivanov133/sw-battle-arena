@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 export const Character = ({
     character,
-    clickEv
+    clickEv,
 }) => {
 
     return (

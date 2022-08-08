@@ -17,7 +17,7 @@ export const BattlePanel = (props) => {
                     <div title="Start Battle" className={styles['battle']} >
 
 
-                        <Link to={`../battle-create/${props.data[0]._id}VS${props.data[1]._id}`} state={{ data: props.data }}>
+                        <Link to={`../battle-create/${props.data[0]._id}VS${props.data[1]._id}`}>
 
                             <img src="https://i.ibb.co/zS4qNwZ/transparent-sword-icon-vikings-icon-swords-icon-60bc20b3a15aa4-1746426716229418756609.png" alt="" />
                             Battle

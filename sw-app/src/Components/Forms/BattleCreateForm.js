@@ -1,13 +1,24 @@
+import { useNavigate } from 'react-router-dom'
+import { createBattle } from '../../services/battlesService'
 import styles from '../Forms/BattleCreateForm.module.css'
 
 export const BattleCreateForm = ({
     character1,
     character2,
 }) => {
+    const navigate = useNavigate()
 
     function onSubmit(ev) {
         ev.preventDefault()
-        console.log("TEST")
+        const characterIds = {
+            'characterIds': [character1._id, character2._id]
+        }
+        createBattle(characterIds)
+            .then(result => {
+                navigate(`/battle-details/${result._id}`)
+            })
+        
+
     }
 
     return (

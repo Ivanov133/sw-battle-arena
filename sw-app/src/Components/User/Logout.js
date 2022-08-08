@@ -13,7 +13,8 @@ export const Logout = () => {
                 userLogout()
                 navigate('/')
             })
-            .catch(() => {
+            .catch((error) => {
+                console.log(error);
                 navigate('/')
             })
     })

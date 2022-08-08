@@ -20,12 +20,10 @@ export const CharacterList = () => {
 
             getAllCharacters()
                 .then(result => {
-                    setCharacters(Object.values(result))
+                    if (result) {setCharacters(Object.values(result))}
                })
         
     }, []);
-
-
 
     //This is optional to use - load data into server and make authorized request - log in to make button visible
     function initialDataLoad() {
@@ -61,7 +59,8 @@ export const CharacterList = () => {
             {/* Battle panel which leads to the Create Battle page */}
             <BattlePanel data={battleCharacters} />
             
-            {user.email && characters.length < 1
+            {/* The intial data POST should be available to newly registered users, since they will have a profile object */}
+            {user.email && user.email !== "peter@abv.bg" && user.email !== "george@abv.bg" && user.email !== "admin@abv.bg " && characters.length < 1
                 ?
                 <button onClick={initialDataLoad}>Load initial data app</button>
                 : null}
@@ -72,7 +71,11 @@ export const CharacterList = () => {
                 {/* Character List*/}
 
                 <h1>Characters Catalog</h1>
-                {characters.map(character => <Character clickEv={ev => selectCharacters(ev, character)} key={character._id} character={character} />)}
+                {characters.map(character => 
+                <Character clickEv={ev => selectCharacters(ev, character)} 
+                            key={character._id} 
+                            character={character}
+                />)}
 
                 {/* Charactet create form*/}
                 {formType === "Create" && <CharacterCreateForm setCharacters={setCharacters} onClose={closeHandler} />}

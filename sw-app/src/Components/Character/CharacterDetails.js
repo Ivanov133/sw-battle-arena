@@ -1,20 +1,23 @@
 import styles from '../Character/CharacterDetails.module.css'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { useContext, useEffect, useState } from 'react'
 import { GiZeusSword } from "react-icons/gi";
 import { AiOutlineComment, AiTwotoneEdit, AiOutlineDelete } from "react-icons/ai";
 import { CharacterEditForm } from '../Forms/CharacterEditForm';
-import { getCharacter } from '../../services/characterService';
+import { deleteCharacter, getCharacter } from '../../services/characterService';
 import { AuthContext } from '../../contexts/authContext'
-import { CharacterCommentsSection } from '../Comments/CharacterCommentsSection';
-import { CommentCreateForm } from '../Forms/CommentCreateForm';
 
 
-export const CharacterDetails = () => {
+export const CharacterDetails = ({
+    userAction,
+    closeHandler,
+    formType,
+
+}) => {
     const { user } = useContext(AuthContext)
     const { charId } = useParams()
     const [character, setCharacter] = useState([])
-    const [formType, setFormType] = useState(null)
+    const navigate = useNavigate()
 
     useEffect(() => {
         getCharacter(charId)
@@ -25,13 +28,14 @@ export const CharacterDetails = () => {
             )
     }, [charId])
 
-    function userAction(action) {
-        setFormType(action)
-    }
+    const deleteHandler = async () => {
 
-    function closeHandler() {
-        setFormType(null);
-    };
+        if (window.confirm('Are you sure you want to delete this character?')) {
+            await deleteCharacter(charId)
+            navigate('/characters')
+
+        }
+    }
 
     return (
         <>
@@ -49,18 +53,14 @@ export const CharacterDetails = () => {
                         </div>
                         <div >
                             <img src="https://i.ibb.co/yy864NN/5a32bf7047e2870dc3bf81a5d8c7db1e361c329f-00-removebg-preview.png" alt="" />
-
                             <p>Full Power: {character.fullPower}</p>
                         </div>
                         <div>
                             {character.allegiance === 'Dark Side'
                                 ? <img src="https://i.ibb.co/q5jfZG3/force-png.png" alt="" />
                                 : <img src="https://i.ibb.co/jMW3YPR/ls-force.png" alt="" />}
-
                             <p>Force: {character.force}</p>
                         </div>
-
-
                     </section>
                     <div className='feats'>
                         <div>
@@ -79,21 +79,19 @@ export const CharacterDetails = () => {
                         {character._ownerId === user._id
                             ? <>
                                 <button onClick={() => userAction("EditCharacter")} className={styles['edit-btn']}><AiTwotoneEdit /> Edit character</button>
-                                <button onClick={() => userAction("DeleteCharacter")} className={styles['delete-btn']}><AiOutlineDelete /> Delete character</button>
+                                <button onClick={deleteHandler} className={styles['delete-btn']}><AiOutlineDelete /> Delete character</button>
                             </>
                             : null}
-                        {user.email 
+                        {user.email
                             ?
                             <button onClick={() => userAction("PostComment")} className={styles['add-btn']}><AiOutlineComment />Add Comment</button>
                             : null}
                     </div>
-
                 </div>
                 {formType === "EditCharacter" && <CharacterEditForm onClose={closeHandler} character={character} setCharacter={setCharacter} />}
 
             </div>
 
-            <CharacterCommentsSection userAction={userAction} formType={formType} closeHandler={closeHandler} characterId={character._id} />
         </>
     )
 }

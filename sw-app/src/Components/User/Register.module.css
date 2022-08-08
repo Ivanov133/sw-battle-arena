@@ -5,6 +5,7 @@
     border-radius: 5px;
     align-items: center;
     background-color: rgb(0, 0, 0, 0.7);
+    position: relative;
 }
 
 
@@ -38,7 +39,12 @@ form input, select {
 .profile-img-preview {
     width: 120px;
     margin: 15px;
+    position: absolute;
+    top: 255px;
+    right: 55px;
 
+}
+.profile-img-preview img {
 }
 
 .profile-img-preview h4 {

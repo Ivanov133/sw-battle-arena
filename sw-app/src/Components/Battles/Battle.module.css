@@ -1,0 +1,17 @@
+.battle-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.add-btn {
+    background-color: black;
+    color: white;
+    padding: 10px;
+    width: 155px;
+    border: none;
+    border-radius: 6%;
+    font-size: 15px;
+    cursor: pointer;
+    font-size: 15px;
+    margin: auto;
+}

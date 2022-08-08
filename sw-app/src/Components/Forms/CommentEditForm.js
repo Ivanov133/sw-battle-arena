@@ -1,28 +1,16 @@
-import { useContext, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import styles from '../Forms/CommentEditForm.module.css'
-import { AuthContext } from '../../contexts/authContext'
-import { editCharacterComment } from '../../services/commentsService'
-import { getProfiles } from '../../services/userService'
+import { editBattleComment, editCharacterComment, getBattleComment, getCharacterComment } from '../../services/commentsService'
 import { useParams } from 'react-router-dom'
 
 export const CommentEditForm = ({
     onClose,
     setComments,
-    comment,
 }) => {
 
-    const [profile, setProfile] = useState({})
-    const { user } = useContext(AuthContext)
-    const {characterId} = useParams()
+    const [comment, setComment] = useState('')
+    const { charId, battleId, commentId } = useParams()
 
-    useEffect(() => {
-        getProfiles()
-            .then(result => {
-                const match = result.find(x => x._ownerId === user._id)
-                setProfile(match)
-
-            })
-    }, [])
 
     const [values, setValues] = useState({
         content: comment.content
@@ -31,6 +19,20 @@ export const CommentEditForm = ({
     const [errors, setErrors] = useState({
         content: false,
     })
+    useEffect(() => {
+        if (charId) {
+            getCharacterComment(commentId).then(result => {
+                setComment(result)
+                setValues(values => values.content = result)
+            })
+        } else if (battleId) {
+            getBattleComment(commentId).then(result => {
+                setComment(result)
+                setValues(values => values.content = result)
+            })
+        }
+    }, [commentId, charId, battleId])
+
 
     const changeHandler = (e) => {
         setValues(state => ({
@@ -72,21 +74,36 @@ export const CommentEditForm = ({
         }
 
         let data = Object.fromEntries(new FormData(ev.target.parentNode))
-        data['profileData'] = profile.profileData
-        data['characterId'] = characterId
+        data['profileData'] = comment.profileData
 
-        editCharacterComment(comment._id, data).then(comment => setComments(
-            oldData => {
-                const newList = oldData.filter(c => c._id !== comment._id)
-                setComments(
-                    ...oldData,
-                    comment
+        if (charId) {
+            data['characterId'] = charId
+
+            editCharacterComment(commentId, data).then(comment => {
+                setComments(state => {
+                    const oldData = state.filter(x => x._id !== comment._id)
+                    return {
+                        ...oldData,
+                        comment
+                    }
+                }
                 )
-            }
-        )
+            })
+        } else if (battleId) {
+            editBattleComment(commentId, data).then(comment => {
+                setComments(state => {
+                    const oldData = state.filter(x => x._id !== comment._id)
+                    return {
+                        ...oldData,
+                        comment
+                    }
+                }
+                )
+            })
+        }
 
-        )
         onClose()
+
     }
 
     return (

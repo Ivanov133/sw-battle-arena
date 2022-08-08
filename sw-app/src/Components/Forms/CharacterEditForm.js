@@ -8,7 +8,7 @@ export const CharacterEditForm = ({
     character,
     setCharacter,
 }) => {
-
+    
     const [values, setValues] = useState({
         name: character.name,
         description: character.description,

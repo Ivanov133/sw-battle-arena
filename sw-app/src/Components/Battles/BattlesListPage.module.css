@@ -1,0 +1,12 @@
+.battles-catalog {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin: 45px auto;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.408);
+    border-radius: 2px;
+    min-height: 90vh;
+    min-height: 100vh;
+
+}

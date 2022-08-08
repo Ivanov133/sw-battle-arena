@@ -16,7 +16,7 @@ export const Navbar = () => {
         <nav className={styles['nav-panel']}>
             <ul>
                 <li><NavLink to="/characters" className={setStyleColor}><GiRobe />Catalog</NavLink></li>
-                <li><NavLink to="/" className={setStyleColor}> <GiSwordTie />Battles</NavLink></li>
+                <li><NavLink to="/battles-catalog" className={setStyleColor}> <GiSwordTie />Battles</NavLink></li>
                 <li>
                     <NavLink to="/" className={setStyleColor}>
                         <div className={styles['img-wrapper']}>
