@@ -40,7 +40,12 @@
 }
 
 .comment-text {
+    margin-left: 25px;
     padding: 15px;
+    width: 85%;
+    height: 50%;
+    background-color: rgba(0, 0, 0, 0);
+    color: black;
 }
 
 .profile-section p {
@@ -80,16 +85,22 @@
     cursor: pointer;
 }
 
-.edit-comment-btn {
+.comment-container a {
     top: 6px;
     right: 15px;
-    background-color: rgb(255, 165, 0, 0.75);
+    background-color: rgba(255, 179, 0, 0.927);
     color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    position: absolute;
+    width: 60px;
+    right: 105px;
+    text-align: center;
 }
 
 .del-comment-btn {
     top: 6px;
-    right: 85px;
+    right: 25px;
     background-color: rgb(255, 0, 0, 0.75);
     color: white;
 }

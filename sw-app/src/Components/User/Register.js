@@ -40,13 +40,11 @@ export const Register = () => {
         } = Object.fromEntries(new FormData(ev.target.parentNode))
 
         const profileData = {
-            "profileData": {
                 moto,
                 profileImg,
                 title,
                 username,
             }
-        }
 
         if (password !== repass) {
             return alert('Passwords must be the same')

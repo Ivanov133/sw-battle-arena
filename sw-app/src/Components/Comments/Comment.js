@@ -1,8 +1,9 @@
 import styles from '../Comments/Comment.module.css'
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../contexts/authContext';
 import { deleteBattleComment, deleteCharacterComment } from '../../services/commentsService';
 import { Link } from 'react-router-dom'
+import { getProfileById } from '../../services/userService';
 
 
 export const Comment = ({
@@ -13,6 +14,14 @@ export const Comment = ({
 }) => {
 
     const { user } = useContext(AuthContext)
+    const [profile, setProfile] = useState()
+
+    useEffect(() => {
+        getProfileById(comment.profileId)
+            .then(result => { setProfile(result) })
+    }, [])
+
+    console.log(profile);
 
     const deleteHandler = async (commentId) => {
         if (window.confirm('Are you sure you want to delete your comment?')) {
@@ -30,23 +39,23 @@ export const Comment = ({
         <>
             <div className={styles["comment-container"]}>
                 <section className={styles["profile-section"]}>
-                    <p className={styles["username"]} >{comment.profileData?.username}</p>
-                    <img className={styles["picture"]} src={comment.profileData?.profileImg} alt="" />
-                    <p className={styles["rank"]}>Rank: {comment.profileData?.title}</p>
-                    <p className={styles["moto"]}>"{comment.profileData?.moto}"</p>
+                    <p className={styles["username"]} >{profile?.username}</p>
+                    <img className={styles["picture"]} src={profile?.profileImg} alt="" />
+                    <p className={styles["rank"]}>Rank: {profile?.title}</p>
+                    <p className={styles["moto"]}>"{profile?.moto}"</p>
                 </section>
                 <section className={styles["comment-section"]}>
                     <div className={styles["buttons-wrapper"]}>
                         {typeof user.email !== 'undefined' ? <> {
                             user._id === comment._ownerId ? <>
                                 <button onClick={() => deleteHandler(comment._id)} className={styles["del-comment-btn"]}>Delete</button>
-                                <Link className={styles['edit-comment-btn']} onClick={() => userAction("EditComment")} to={`${comment._id}`}>Edit Comment</Link>
+                                <Link className={styles['edit-comment-btn']} onClick={() => userAction("EditComment")} to={`${comment._id}`}>Edit</Link>
                             </>
                                 : null}</>
                             : null}
                     </div>
                     <hr />
-                    <p className={styles["comment-text"]}>{comment.content}</p>
+                    <textarea className={styles["comment-text"]}>{comment.content}</textarea>
                 </section>
             </div>
         </>

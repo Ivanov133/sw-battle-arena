@@ -71,14 +71,12 @@ export const BattleCommentsCreateForm = ({
         }
 
         let data = Object.fromEntries(new FormData(ev.target.parentNode))
-        data['profileData'] = profile?.profileData || 'THIS USER HAS NO PROFILE CREATED'
+        data['profileId'] = profile?._id
         data['battle_id'] = battleId
 
         createBattleComment(data).then(comment => setComments(
             oldData => [...oldData, comment]
-        )
-
-        )
+        ))
         onClose()
     }
 

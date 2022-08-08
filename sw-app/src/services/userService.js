@@ -21,25 +21,10 @@ export const logout = async (accessToken) => {
     }
 
 }
-/* 
-export const getUserDetails = () => request.get(`${baseUrl}/users/`)
- */
-/* export async function getUserDetails(token) {
-    console.log(token)
-    const response = await fetch(`${baseUrl}/users/me`, {
-            headers: {
-                'content-type': 'application/json',
-                'X-Authorization': token
-            }
-        })
-    
-    const result = await response.json()
-    console.log(result);
-
-    return result
-
-} */
 
 export const createProfile = (data) => request.post(`${baseUrl}/data/profiles`, data)
 
 export const getProfiles = () => request.get(`${baseUrl}/data/profiles/`)
+
+export const getProfileById = (id) => request.get(`${baseUrl}/data/profiles/${id}`)
+

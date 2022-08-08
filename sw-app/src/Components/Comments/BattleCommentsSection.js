@@ -59,7 +59,8 @@ export const BattleCommentsSection = ({
                 onClose={closeHandler}
                 formType={formType}
             />}
-            {formType === "EditComment" && <CommentEditForm onClose={closeHandler} setComments={setComments}/>}
+            {formType === "EditComment" && <CommentEditForm onClose={closeHandler} setComments={setComments} />}
+            
         </div>
     )
 }

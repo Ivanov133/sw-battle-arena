@@ -12,7 +12,6 @@ export const CharacterCommentsSection = ({
     
 }) => {
     const [displaySection, setDisplaySection] = useState('Hide')
-    console.log(formType);
 
     function showComments() {
         if (displaySection === 'Show') {

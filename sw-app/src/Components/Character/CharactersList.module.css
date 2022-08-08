@@ -4,7 +4,7 @@
     display: flex;
     flex-wrap: wrap;
     margin: 75px 45px;
-    background-color: rgba(255, 255, 255, 0.55);
+    background-color: rgba(255, 255, 255, 0.45);
     border-radius: 2px;
     min-height: 90vh;
     position: relative;
@@ -17,7 +17,7 @@
     text-align: center;
     width: 100%;
     color: rgb(0 0 0 / 70%);
-    font-size: 20px;
+    font-size: 25px;
 }
 
 
@@ -38,4 +38,17 @@
     box-shadow: 0px 0px 30px 12px #E1FF24;
     cursor: pointer;
 
+}
+
+.load-data-btn {
+    background-color: rgba(0, 0, 0, 0.824);
+    border: none;
+    padding: 8px;
+    color: white;
+    cursor: pointer;
+    margin: 0;
+    border-radius: 5px;
+    margin: auto;
+    text-align: center;
+    width: 100%;
 }

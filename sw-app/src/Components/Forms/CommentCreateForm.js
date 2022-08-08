@@ -72,7 +72,7 @@ export const CommentCreateForm = ({
         }
 
         let data = Object.fromEntries(new FormData(ev.target.parentNode))
-        data['profileData'] = profile?.profileData || 'THIS USER HAS NO PROFILE CREATED'
+        data['profileId'] = profile?._id
 
         if (formType === 'PostBattleComment' && battleId) {
             data['battle_id'] = battleId
