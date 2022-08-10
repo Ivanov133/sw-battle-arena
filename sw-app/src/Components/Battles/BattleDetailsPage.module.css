@@ -14,3 +14,15 @@
     margin: auto;
     width: 100%;
 }
+
+.del-btn {
+    background-color: rgba(252, 0, 0, 0.74);
+    color: white;
+    padding: 10px;
+    width: 155px;
+    font-size: 15px;
+    cursor: pointer;
+    font-size: 15px;
+    margin: auto;
+    width: 100%;
+}

@@ -17,7 +17,7 @@ export const Profile = () => {
                 setProfile(match)
 
             })
-    }, [])
+    }, [userId])
 
     function userAction(action) {
         setFormType(action)

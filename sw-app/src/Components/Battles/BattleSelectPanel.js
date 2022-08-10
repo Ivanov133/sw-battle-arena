@@ -3,8 +3,6 @@ import styles from "../Battles/BattleSelectPanel.module.css"
 
 
 export const BattleSelectPanel = (props) => {
-
-    console.log(props);
     return (
         <div style={{ display: props.data.length > 0 ? '' : 'none' }} title="Selected characters" className={styles['battle-panel']} >
             {props.data.length === 1

@@ -9,12 +9,30 @@
     justify-content: space-between;
     overflow: scroll;
     padding: 25px;
+    position: relative;
 }
 
-.main-wrapper  span {
+.main-wrapper header {
+    display: flex;
 }
 
-.main-wrapper p {
+.transperant-img1-wrapper {
+    width: 100px;
+    z-index: 2;
+}
+
+.transperant-img1-wrapper img {
+    width: 100%;
+}
+
+.transperant-img2-wrapper {
+    width: 180px;
+}
+
+.transperant-img2-wrapper img {
+    width: 100%;
+    z-index: 99;
+
 }
 
 .main-wrapper  h1 {

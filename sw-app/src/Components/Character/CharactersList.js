@@ -16,7 +16,6 @@ export const CharacterList = () => {
     const { user } = useContext(AuthContext)
 
     useEffect(() => {
-
         getAllCharacters()
             .then(result => {
                 if (result) { setCharacters(Object.values(result)) }
@@ -30,7 +29,6 @@ export const CharacterList = () => {
             createCharacter(x)
         })
         navigate('/')
-
     }
 
     function selectCharacters(ev, character) {
@@ -42,7 +40,7 @@ export const CharacterList = () => {
             setBattle(battleCharacters => [...battleCharacters, character])
         }
     }
-    console.log(user.email);
+    
     function userAction(action) {
         setFormType(action)
     }
@@ -71,7 +69,7 @@ export const CharacterList = () => {
                     <Character clickEv={ev => selectCharacters(ev, character)}
                         key={character._id}
                         character={character}
-                    />) : <p>No characters available</p>}
+                    />) : <p>No characters available. Please login to add new characters or load data from database.</p>}
 
                 {formType === "Create" && <CharacterCreateForm setCharacters={setCharacters} onClose={closeHandler} />}
                 

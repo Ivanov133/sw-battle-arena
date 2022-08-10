@@ -21,8 +21,6 @@ export const Comment = ({
             .then(result => { setProfile(result) })
     }, [comment.profileId])
 
-    console.log(profile);
-
     const deleteHandler = async (commentId) => {
         if (window.confirm('Are you sure you want to delete your comment?')) {
             if (type === 'character') {

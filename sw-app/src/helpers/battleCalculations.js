@@ -10,7 +10,7 @@ export function calcOdds(stat1, stat2) {
     if (difference > 50 ) {
         difference += 50
     } else if (difference > 30 ) {
-        difference += 45
+        difference += 40
     } else if (difference > 25 ) {
         difference += 30
     } else if (difference > 10 ) {
