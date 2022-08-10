@@ -3,8 +3,8 @@ import { Comment } from "./Comment"
 import styles from './BattleCommentsSection.module.css'
 import { getAllBattleComments } from "../../services/commentsService"
 import { useParams } from "react-router-dom"
-import { CommentCreateForm } from "../Forms/CommentCreateForm"
-import { CommentEditForm } from "../Forms/CommentEditForm"
+import { CommentCreateForm } from "../Forms/CommentsForms/CommentCreateForm"
+import { CommentEditForm } from "../Forms/CommentsForms/CommentEditForm"
 
 export const BattleCommentsSection = ({
     closeHandler,

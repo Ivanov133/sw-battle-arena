@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom'
-import styles from '../Basic/Footer.module.css'
+import styles from '../Navigation/Footer.module.css'
 
 
 export const Footer = () => {
@@ -11,8 +11,7 @@ export const Footer = () => {
     return (
         <footer className={styles['footer-main']}>
             <ul>
-                <li><NavLink to="/" className={setStyleColor}>About Us</NavLink></li>
-                <li><NavLink to="/characters" className={setStyleColor}>User Guide</NavLink></li>
+                <li><NavLink to="/introduction" className={setStyleColor}>Site Introduction</NavLink></li>
             </ul>
         </footer>
     )

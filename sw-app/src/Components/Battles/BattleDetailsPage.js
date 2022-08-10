@@ -3,10 +3,10 @@ import { useNavigate, useParams } from "react-router-dom"
 import { getBattle } from "../../services/battlesService"
 import { getCharacter } from "../../services/characterService"
 import { BattleCommentsSection } from "../Comments/BattleCommentsSection"
-import { BattleDetails } from "./BattleDetails"
-import styles from "../Battles/Battle.module.css"
+import { BattleDetails } from "./BattleCharactersDetails"
+import styles from "../Battles/BattleDetailsPage.module.css"
 
-export const Battle = () => {
+export const BattleDetailsPage = () => {
 
     const { battleId } = useParams()
     const [character1, setCharacter1] = useState([])

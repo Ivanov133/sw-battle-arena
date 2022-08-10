@@ -1,18 +1,19 @@
 import { useContext, useEffect, useState } from 'react'
-import styles from '../Forms/CommentCreateForm.module.css'
-import { AuthContext } from '../../contexts/authContext'
-import { createBattleComment } from '../../services/commentsService'
-import { getProfiles } from '../../services/userService'
+import styles from '../CommentsForms/CommentCreateForm.module.css'
+import { AuthContext } from '../../../contexts/authContext'
+import { createBattleComment, createCharacterComment } from '../../../services/commentsService'
+import { getProfiles } from '../../../services/userService'
 import { useParams } from 'react-router-dom'
 
-export const BattleCommentsCreateForm = ({
+export const CommentCreateForm = ({
     onClose,
     setComments,
+    formType,
 }) => {
 
     const [profile, setProfile] = useState({})
     const { user } = useContext(AuthContext)
-    const {battleId} = useParams()
+    const { charId, battleId } = useParams()
 
     useEffect(() => {
         getProfiles()
@@ -72,11 +73,21 @@ export const BattleCommentsCreateForm = ({
 
         let data = Object.fromEntries(new FormData(ev.target.parentNode))
         data['profileId'] = profile?._id
-        data['battle_id'] = battleId
 
-        createBattleComment(data).then(comment => setComments(
-            oldData => [...oldData, comment]
-        ))
+        if (formType === 'PostBattleComment' && battleId) {
+            data['battle_id'] = battleId
+            createBattleComment(data).then(comment => setComments(
+                oldData => [...oldData, comment]
+            ))
+
+        } else {
+            data['characterId'] = charId
+            createCharacterComment(data).then(comment => setComments(
+                oldData => [...oldData, comment]
+            ))
+        }
+
+
         onClose()
     }
 

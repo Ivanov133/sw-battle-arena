@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import styles from '../Forms/CommentEditForm.module.css'
-import { editBattleComment, editCharacterComment, getBattleComment, getCharacterComment } from '../../services/commentsService'
+import styles from '../CommentsForms/CommentEditForm.module.css'
+import { editBattleComment, editCharacterComment, getBattleComment, getCharacterComment } from '../../../services/commentsService'
 import { useParams } from 'react-router-dom'
 
 export const CommentEditForm = ({

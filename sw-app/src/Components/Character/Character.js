@@ -1,5 +1,7 @@
 import styles from '../Character/Character.module.css'
 import { Link } from 'react-router-dom'
+import { useContext } from 'react'
+import { AuthContext } from '../../contexts/authContext'
 
 
 export const Character = ({
@@ -7,13 +9,15 @@ export const Character = ({
     clickEv,
 }) => {
 
+    const {user} = useContext(AuthContext)
+    
     return (
         <div className={
             character.allegiance === 'Dark Side'
                 ? `${styles['short-card']} ${styles['dark-side']}`
                 : `${styles['short-card']} ${styles['light-side']}`
         }>
-            {clickEv
+            {clickEv && user.email
                 ? <div title='Select for battle' onClick={clickEv} className={styles['character-selector']}>
                     <img src="https://i.ibb.co/zS4qNwZ/transparent-sword-icon-vikings-icon-swords-icon-60bc20b3a15aa4-1746426716229418756609.png" alt="" />
 

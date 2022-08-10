@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
 import { getCharacter } from '../../services/characterService'
 import styles from './BattlePreviewCard.module.css'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import { calcOdds } from '../../helpers/battleCalculations'
 
 export const BattlePreviewCard = ({
     battle
@@ -21,9 +22,17 @@ export const BattlePreviewCard = ({
             .then(result => { setCharacter2(result) })
     }, [battle.characterIds])
 
+
     const showDetails = () => {
         navigate(`/battle-details/${battle._id}`)
     }
+
+    const odds = {
+        "fullPower": calcOdds(Number(character1.fullPower), Number(character2.fullPower)),
+    }
+
+    const bar1Width = (odds.fullPower[0] / 100) * 400
+    const bar2Width = (odds.fullPower[1] / 100) * 400
 
     return (
         <div onClick={showDetails} className={styles["battle-cards-wrapper"]}>
@@ -37,13 +46,13 @@ export const BattlePreviewCard = ({
             <div className={styles["odds-wrapper"]}>
                 <div
                     className={styles["odds-bar1"]}
-                    style={{ width: '200px' }}>
-                    <span>58%</span>
+                    style={{ width: bar1Width }}>
+                    <span>{odds.fullPower[0]}%</span>
                 </div>
                 <div
                     className={styles["odds-bar2"]}
-                    style={{ width: '100px' }}>
-                    <span>42%</span>
+                    style={{ width: bar2Width }}>
+                    <span>{odds.fullPower[1]}%</span>
                 </div>
             </div>
         </div>

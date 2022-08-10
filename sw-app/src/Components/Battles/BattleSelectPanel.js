@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom'
-import styles from "../Battles/BattlePanel.module.css"
+import styles from "../Battles/BattleSelectPanel.module.css"
 
 
-export const BattlePanel = (props) => {
+export const BattleSelectPanel = (props) => {
+
+    console.log(props);
     return (
         <div style={{ display: props.data.length > 0 ? '' : 'none' }} title="Selected characters" className={styles['battle-panel']} >
             {props.data.length === 1
@@ -17,9 +19,9 @@ export const BattlePanel = (props) => {
                     <div title="Start Battle" className={styles['battle']} >
 
 
-                        <Link to={`../battle-create/${props.data[0]._id}VS${props.data[1]._id}`}>
-
+                        <Link to={`/battle-create/${props.data[0]._id}VS${props.data[1]._id}`}>
                             <img src="https://i.ibb.co/zS4qNwZ/transparent-sword-icon-vikings-icon-swords-icon-60bc20b3a15aa4-1746426716229418756609.png" alt="" />
+
                             Battle
                         </Link>
 

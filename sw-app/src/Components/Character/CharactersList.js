@@ -1,8 +1,8 @@
 import { Character } from "./Character"
 import { useState, useEffect, useContext } from "react"
 import styles from "./CharactersList.module.css"
-import { BattlePanel } from '../Battles/BattlePanel'
-import { CharacterCreateForm } from "../Forms/CharacterCreateForm"
+import { BattleSelectPanel } from '../Battles/BattleSelectPanel'
+import { CharacterCreateForm } from "../Forms/CharacterForms/CharacterCreateForm"
 import { createCharacter, getAllCharacters } from '../../services/characterService'
 import { charactersData } from "../../helpers/prefetchData"
 import { AuthContext } from '../../contexts/authContext'
@@ -54,7 +54,7 @@ export const CharacterList = () => {
     return (
         <>
             {/* Battle panel which leads to the Create Battle page */}
-            <BattlePanel data={battleCharacters} />
+            <BattleSelectPanel data={battleCharacters} />
 
             {/* The intial data POST should be available to newly registered users, since they will have a profile object */}
             {user.email && user.email !== "peter@abv.bg" && user.email !== "george@abv.bg" && user.email !== "admin@abv.bg " && characters.length < 1

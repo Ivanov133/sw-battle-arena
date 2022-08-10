@@ -28,3 +28,6 @@ export const getProfiles = () => request.get(`${baseUrl}/data/profiles/`)
 
 export const getProfileById = (id) => request.get(`${baseUrl}/data/profiles/${id}`)
 
+export const editProfile = (id, data) => request.put(`${baseUrl}/data/profiles/${id}`, data)
+
+

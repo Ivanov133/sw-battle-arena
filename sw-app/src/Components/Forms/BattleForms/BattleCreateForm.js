@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
-import { createBattle } from '../../services/battlesService'
-import styles from '../Forms/BattleCreateForm.module.css'
+import { createBattle } from '../../../services/battlesService'
+import styles from '../BattleForms/BattleCreateForm.module.css'
 
 export const BattleCreateForm = ({
     character1,
@@ -15,6 +15,7 @@ export const BattleCreateForm = ({
         }
         createBattle(characterIds)
             .then(result => {
+                console.log(result);
                 navigate(`/battle-details/${result._id}`)
             })
         

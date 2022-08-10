@@ -1,4 +1,4 @@
-import styles from '../Basic/navbar.module.css'
+import styles from '../Navigation/navbar.module.css'
 import { GiSwordTie, GiRobe, GiRun, GiOverlordHelm } from "react-icons/gi";
 import { NavLink } from 'react-router-dom'
 import { useContext } from 'react';
@@ -19,7 +19,7 @@ export const Navbar = () => {
                 <li><NavLink to="/battles-catalog" className={setStyleColor}> <GiSwordTie />Battles</NavLink></li>
                 <li>
                     <NavLink to="/" className={setStyleColor}>
-                        <div className={styles['img-wrapper']}>
+                        <div title='Home Page' className={styles['img-wrapper']}>
                             <img src="https://i.ibb.co/xj0389H/Pik-Png-com-outline-png-203957.png" alt="" />
                             <p>BATTLE ARENA</p>
                         </div>

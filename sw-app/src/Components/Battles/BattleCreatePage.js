@@ -1,10 +1,10 @@
-import { BattleDetails } from './BattleDetails'
+import { BattleDetails } from './BattleCharactersDetails'
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
 import { getCharacter } from "../../services/characterService";
-import { BattleCreateForm } from "../Forms/BattleCreateForm";
+import { BattleCreateForm } from "../Forms/BattleForms/BattleCreateForm";
 
-export const BattleCreate = () => {
+export const BattleCreatePage = () => {
 
     const { characterIds } = useParams()
     const [character1_id, character2_id] = characterIds.split('VS')

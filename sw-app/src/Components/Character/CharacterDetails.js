@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { useContext, useEffect, useState } from 'react'
 import { GiZeusSword } from "react-icons/gi";
 import { AiOutlineComment, AiTwotoneEdit, AiOutlineDelete } from "react-icons/ai";
-import { CharacterEditForm } from '../Forms/CharacterEditForm';
+import { CharacterEditForm } from '../Forms/CharacterForms/CharacterEditForm';
 import { deleteCharacter, getCharacter } from '../../services/characterService';
 import { AuthContext } from '../../contexts/authContext'
 

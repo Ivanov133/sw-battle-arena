@@ -1,5 +1,5 @@
 import { Character } from "../Character/Character";
-import styles from "./BattleDetails.module.css"
+import styles from "./BattleCharactersDetails.module.css"
 import { BattleOdds } from "./BattleOdds";
 import { GiZeusSword } from "react-icons/gi";
 

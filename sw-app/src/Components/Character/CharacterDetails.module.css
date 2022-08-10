@@ -4,7 +4,7 @@
     border-radius: 2px;
     min-height: 80vh;
     display: flex;
-    box-shadow: 0px 0px 16px 3px rgba(38,38,38,0.88);
+    box-shadow: 0px 0px 16px 3px rgba(38, 38, 38, 0.88);
 }
 
 
@@ -28,17 +28,18 @@
     text-align: center;
     font-style: italic;
     margin: 15px 0;
-    
+
 }
 
 .character-details .image-wrapper section img {
-    width:65px;
+    width: 65px;
     height: 65px;
 }
 
 .character-details .image-wrapper section p {
     font-size: 15px;
     font-weight: 900;
+
 }
 
 .character-details li {
@@ -61,14 +62,19 @@
     align-content: center;
     margin: 35px 25px 35px 25px;
     font-weight: 900;
-    
+
 }
 
 
 .content .full-description {
     margin-bottom: 25px;
+    margin-right: 15px;
     padding: 15px;
+    text-indent: 3em;
+    text-align: justify;
+    text-justify: inter-word;
 }
+
 
 .buttons {
     position: absolute;

@@ -8,7 +8,7 @@
     text-align: center;
     display: inline-block;
     width: 135px;
-    height: 230px;
+    height: 250px;
     margin: 20px;
     background-color: rgb(0, 0, 0, 0.8);
     position: relative;
@@ -35,8 +35,9 @@
 }
 
 .short-card h2 {
-    font-size: 0.85rem;
+    font-size: 0.75rem;
     margin: 0;
+    margin-bottom: 4px;
 
 }
 
@@ -47,7 +48,6 @@
 
 .short-card button {
     border: 0px;
-    padding: 1.6px;
     background-color: black;
     color: white;
     border-radius: 3px;
@@ -55,8 +55,8 @@
     width: 100px;
     padding: 2px;
     position: absolute;
-    bottom: 0;
-    left: 16px;
+    bottom: -2px;
+    left: 18px;
 }
 
 .short-card a:hover {
@@ -76,7 +76,7 @@
 
 .short-card section .stat-number {
     font-size: 0.65rem;
-    margin: 3px;
+    margin: 0;
 }
 
 .short-card section img {

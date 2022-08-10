@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { CharacterCommentsSection } from "../Comments/CharacterCommentsSection"
-import { CommentEditForm } from "../Forms/CommentEditForm"
+import { CommentEditForm } from "../Forms/CommentsForms/CommentEditForm"
 import { CharacterDetails } from "./CharacterDetails"
 import { getAllCharacterComments } from "../../services/commentsService"
 

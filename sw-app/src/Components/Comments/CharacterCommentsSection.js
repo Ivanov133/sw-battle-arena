@@ -1,7 +1,7 @@
 import {  useState } from "react"
 import { Comment } from "./Comment"
 import styles from './CharacterCommentsSection.module.css'
-import { CommentCreateForm } from "../Forms/CommentCreateForm"
+import { CommentCreateForm } from "../Forms/CommentsForms/CommentCreateForm"
 
 export const CharacterCommentsSection = ({
     closeHandler,

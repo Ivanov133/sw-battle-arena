@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import styles from '../Forms/CharacterCreateForm.module.css'
-import * as characterService from '../../services/characterService'
+import styles from '../CharacterForms/CharacterCreateForm.module.css'
+import * as characterService from '../../../services/characterService'
 
 
 export const CharacterEditForm = ({

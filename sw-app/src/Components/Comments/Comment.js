@@ -19,7 +19,7 @@ export const Comment = ({
     useEffect(() => {
         getProfileById(comment.profileId)
             .then(result => { setProfile(result) })
-    }, [])
+    }, [comment.profileId])
 
     console.log(profile);
 
@@ -55,7 +55,7 @@ export const Comment = ({
                             : null}
                     </div>
                     <hr />
-                    <textarea className={styles["comment-text"]}>{comment.content}</textarea>
+                    <p className={styles["comment-text"]} value="">{comment.content}</p>
                 </section>
             </div>
         </>

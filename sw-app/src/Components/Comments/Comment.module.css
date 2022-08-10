@@ -46,6 +46,7 @@
     height: 50%;
     background-color: rgba(0, 0, 0, 0);
     color: black;
+    word-break: break-all;
 }
 
 .profile-section p {
@@ -104,3 +105,4 @@
     background-color: rgb(255, 0, 0, 0.75);
     color: white;
 }
+

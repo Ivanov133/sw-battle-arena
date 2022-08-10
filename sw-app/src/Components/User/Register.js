@@ -11,7 +11,7 @@ export const Register = () => {
         repass: '',
         username: '',
         title: '',
-        moto: '',
+        motto: '',
         profileImg: 'https://i.ibb.co/p380hYQ/1870286df48feb862c26e7437707683d.jpg',
     })
 
@@ -33,14 +33,14 @@ export const Register = () => {
             email,
             password,
             repass,
-            moto,
+            motto,
             profileImg,
             title,
             username,
         } = Object.fromEntries(new FormData(ev.target.parentNode))
 
         const profileData = {
-                moto,
+                motto,
                 profileImg,
                 title,
                 username,
@@ -63,26 +63,26 @@ export const Register = () => {
         <div className={styles["form-wrapper"]}>
             <form>
                 <label htmlFor="email">Email</label>
-                <input onChange={changeHandler} value={values.email} type="text" id="email" name="email" required />
+                <input onChange={changeHandler} value={values.email} type="text" id="email" name="email" placeholder="Enter you email" required />
 
                 <label htmlFor="username">Username</label>
-                <input onChange={changeHandler} value={values.username} type="text" id="username" name="username" required />
+                <input onChange={changeHandler} value={values.username} type="text" id="username" name="username" placeholder="Enter you username" required />
 
                 <label htmlFor="password">Password</label>
-                <input onChange={changeHandler} value={values.password} type="password" id="password" name="password" required />
+                <input onChange={changeHandler} value={values.password} type="password" id="password" name="password" placeholder="Enter password" required />
 
                 <label htmlFor="repass">Repeat Password</label>
-                <input onChange={changeHandler} value={values.repass} type="password" id="repass" name="repass" required />
+                <input onChange={changeHandler} value={values.repass} type="password" id="repass" name="repass" placeholder="Repeat password" required />
 
                 <label htmlFor="profileImg">Profile picture URL:</label>
                 <input onChange={changeHandler} value={values.profileImg} type="text" id="profileImg" name="profileImg" required />
 
                 <label htmlFor="title">Title</label>
-                <input onChange={changeHandler} value={values.title} id="title" name="title" required/>
+                <input onChange={changeHandler} value={values.title} id="title" name="title" placeholder="Think of a title, for example - Grand Master Jedi" required/>
                 
 
-                <label htmlFor="moto">Moto</label>
-                <input onChange={changeHandler} value={values.moto} type="text" id="moto" name="moto" required />
+                <label htmlFor="motto">Motto</label>
+                <input onChange={changeHandler} value={values.motto} type="text" id="motto" name="motto" placeholder="Think of a quote, motto, etc." required />
 
                 <button onClick={(ev) => onSubmit(ev)}>Register</button>
 
