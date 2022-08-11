@@ -1,10 +1,5 @@
+
 I. Basic Application Concept
-II. Maintained functionalities
-
-
-
-
-I. 
 
     The main purpose of the app is to serve as an online forum. The forum contains a database about
 Star Wars characters and has description about each one of them (much like a wikipedia site - the equivalent is
@@ -12,14 +7,13 @@ a site called Wookipedia, at https://starwars.fandom.com/wiki/Darth_Nihilus).
     The main difference here, as that each character's strength is subjectively evaluated by the creator
 The characters can face each other in a battle, created by the user. And all of this can be commented by app's users.
 
-II. 
+II. Maintained functionalities
 
     Please note that for a complete experience, a new user should be registered, instead of using the server
 pre-uploaded users (peter, gosho and admin), because they do not have a profile in the database.
 
 If a new user is regitered, and there are no characters posted in the DB, there is an option for initial data post
-to the server and initial render to it - this is only done to show what the site is intended to look like, you can
-ignore this functionality and just create you own characters.
+to the server and initial render to the app - this is only done to show what the site is intended to look like, you can ignore this functionality and just create you own characters.
 
 - Profile section:
 
