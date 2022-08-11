@@ -26,8 +26,6 @@ function App() {
         setUser({})
     }
 
-    console.log(user.accessToken);
-
     return (
         <AuthContext.Provider value={{ user, userLogin, userLogout }}>
             <div style={styles} className="App">
@@ -48,7 +46,6 @@ function App() {
                     <Route path="/introduction" element={<Home />} />
                 </Routes>
                 <Footer></Footer>
-
             </div>
         </AuthContext.Provider>
 

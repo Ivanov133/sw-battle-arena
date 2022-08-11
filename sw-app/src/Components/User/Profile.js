@@ -27,8 +27,6 @@ export const Profile = () => {
         setFormType(null);
     };
 
-    console.log(profile);
-
     return (
         <div className={styles["profile-container"]}>
             <div className={styles["img-wrapper"]}>

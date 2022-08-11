@@ -15,7 +15,6 @@ export const BattleCreateForm = ({
         }
         createBattle(characterIds)
             .then(result => {
-                console.log(result);
                 navigate(`/battle-details/${result._id}`)
             })
         
