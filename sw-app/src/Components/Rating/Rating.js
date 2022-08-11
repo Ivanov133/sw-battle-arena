@@ -49,7 +49,7 @@ export const Rating = ({
                 result => {
                     setCurrentRating(calcRating([...characterRatingsList, result]))
                     setCharacterRatingsList(state => [...state, result])
-                    setUserHasRated(true)
+                    setUserHasRated("rated")
                 }
             )
         }
@@ -67,7 +67,7 @@ export const Rating = ({
                     )}
                 </ul> : null}
             </div>
-            <p>Voted by {characterRatingsList.length} users ({userHasRated ? "Already voted" : null})</p>
+            <p>Voted by {characterRatingsList.length} users {userHasRated === "rated" ? "(Already voted)" : null}</p>
         </section>
     )
 
