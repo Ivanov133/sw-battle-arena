@@ -15,7 +15,7 @@ II. Maintained functionalities
 pre-uploaded users (peter, gosho and admin), because they do not have a profile in the database.
 
 If a new user is regitered, and there are no characters posted in the DB, there is an option for initial data post
-to the server and initial render to the app - this is only done to show what the site is intended to look like, you can ignore this functionality and just create you own characters.
+to the server and initial render to the app - this is only done to show what the site is intended to look like, you can ignore this functionality and just create you own characters (but it is highly recommended to try this).
 
 - Profile section:
 
