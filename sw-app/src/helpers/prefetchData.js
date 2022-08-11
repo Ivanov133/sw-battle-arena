@@ -1,6 +1,7 @@
 //This is only used to populate  data in the server
 
 import { createCharacter } from "../services/characterService"
+import { postCharacterRating } from "../services/ratingService"
 
 export const charactersData = [
     {
@@ -362,6 +363,14 @@ export const charactersData = [
 
 ]
 
-export function initialDataLoad() {
-    charactersData.forEach(x => createCharacter(x))
+export function loadData(x) {
+
+    createCharacter(x).then(result => {
+        const ratingData = {
+            "character_id": result._id,
+            "rating_value": 5
+        }
+        postCharacterRating(ratingData)
+    })
+
 }

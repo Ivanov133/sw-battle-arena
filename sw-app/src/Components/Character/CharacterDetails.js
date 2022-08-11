@@ -6,7 +6,7 @@ import { AiOutlineComment, AiTwotoneEdit, AiOutlineDelete } from "react-icons/ai
 import { CharacterEditForm } from '../Forms/CharacterForms/CharacterEditForm';
 import { deleteCharacter, getCharacter } from '../../services/characterService';
 import { AuthContext } from '../../contexts/authContext'
-
+import { Rating } from '../Rating/Rating';
 
 export const CharacterDetails = ({
     userAction,
@@ -40,7 +40,9 @@ export const CharacterDetails = ({
     return (
         <>
             <div key={charId} className={styles['character-details']}>
+
                 <div className={styles['image-wrapper']}>
+                    <Rating id={charId} />
                     <img src={character.fullImg} alt="" />
                     <h1>{character.name}</h1>
                     <section>

@@ -4,7 +4,7 @@ import styles from "./CharactersList.module.css"
 import { BattleSelectPanel } from '../Battles/BattleSelectPanel'
 import { CharacterCreateForm } from "../Forms/CharacterForms/CharacterCreateForm"
 import { createCharacter, getAllCharacters } from '../../services/characterService'
-import { charactersData } from "../../helpers/prefetchData"
+import { charactersData, loadData } from "../../helpers/prefetchData"
 import { AuthContext } from '../../contexts/authContext'
 import { useNavigate } from "react-router-dom"
 
@@ -25,9 +25,7 @@ export const CharacterList = () => {
 
     //This is optional to use - load data into server and make authorized request - log in to make button visible
     function initialDataLoad() {
-        charactersData.forEach(x => {
-            createCharacter(x)
-        })
+        charactersData.forEach(x => loadData(x))
         navigate('/')
     }
 

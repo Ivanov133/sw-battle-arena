@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import styles from '../CharacterForms/CharacterCreateForm.module.css'
 import * as characterService from '../../../services/characterService'
+import { postCharacterRating } from '../../../services/ratingService'
 
 
 export const CharacterCreateForm = ({
@@ -8,19 +9,19 @@ export const CharacterCreateForm = ({
     setCharacters
 }) => {
 
-        const [values, setValues] = useState({
-            name: '',
-            description: '',
-            allegiance: 'Dark Side',
-            force: '',
-            dueling: '',
-            fullPower: '',
-            shortImg: 'https://i.ibb.co/16g4z2Z/actor-darth-revan-292007-large.jpg',
-            fullImg: 'https://i.ibb.co/PNC3LF2/41744707f1748ace85d7964dc394aeb7.jpg',
-            quote: '',
-            author: '',
-            feats: '',
-        })
+    const [values, setValues] = useState({
+        name: '',
+        description: '',
+        allegiance: 'Dark Side',
+        force: '',
+        dueling: '',
+        fullPower: '',
+        shortImg: 'https://i.ibb.co/16g4z2Z/actor-darth-revan-292007-large.jpg',
+        fullImg: 'https://i.ibb.co/PNC3LF2/41744707f1748ace85d7964dc394aeb7.jpg',
+        quote: '',
+        author: '',
+        feats: '',
+    })
 
     const [errors, setErrors] = useState({
         name: false,
@@ -57,15 +58,24 @@ export const CharacterCreateForm = ({
                 return alert("All fields are mandatory");
             }
         }
-        
+
         let data = Object.fromEntries(new FormData(e.target.parentNode))
         data.feats = data.feats.split(",")
 
+        //Send request for the character creation and the starting rating
         characterService.createCharacter(data)
-        .then(character => {
-            setCharacters(oldData => [...oldData, character]);
-            onClose();
-        });
+            .then(character => {
+                const ratingData = {
+                    "character_id": character._id,
+                    "rating_value": 5
+                }
+
+                setCharacters(oldData => [...oldData, character]);
+                postCharacterRating(ratingData)
+            });
+
+        onClose();
+
     }
 
     const validateLength = (e, minLength) => {
@@ -93,7 +103,7 @@ export const CharacterCreateForm = ({
                     ...errors,
                     [e.target.name]: true,
                 })
-            ) 
+            )
         }
         else if (Number(values[e.target.name]) < min || Number(values[e.target.name]) > 100) {
             setErrors(
@@ -168,16 +178,16 @@ export const CharacterCreateForm = ({
                     value={values.fullImg} />
 
                 <label htmlFor="quote">Quote</label>
-                <input onBlur={(e) => validateLength(e, 10)}  onChange={changeHandler} value={values.quote} placeholder='What is said about the character from others, or by himself' id="quote" type="text" name="quote" />
+                <input onBlur={(e) => validateLength(e, 10)} onChange={changeHandler} value={values.quote} placeholder='What is said about the character from others, or by himself' id="quote" type="text" name="quote" />
                 {errors.quote && <p>Quote must be at least 10 symbols long</p>}
 
                 <label htmlFor="author">Quote Author</label>
-                <input onBlur={(e) => validateLength(e, 3)}  onChange={changeHandler} value={values.author} placeholder='Name of author' id="author" type="text" name="author" />
+                <input onBlur={(e) => validateLength(e, 3)} onChange={changeHandler} value={values.author} placeholder='Name of author' id="author" type="text" name="author" />
                 {errors.author && <p>Name of author must be at least 3 symbols long</p>}
 
 
 
-                <button  onClick={onSubmit} className={styles['submit-btn']} >Create</button>
+                <button onClick={onSubmit} className={styles['submit-btn']} >Create</button>
 
 
             </form>

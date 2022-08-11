@@ -1,0 +1,47 @@
+.star-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.star-section h4 {
+    margin: 0;
+    font-style: italic;
+}
+
+.star-section ul {
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.star-section p {
+    margin: 0;
+    font-style: italic;
+}
+
+.star-section li {
+    margin: 0;
+}
+
+.star-section .unrated {
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+    cursor: pointer;
+    font-size: 28px;
+    color: rgb(255, 213, 0);
+    text-shadow: 0px 0px 20px #FFF014;
+}
+
+.star-section .unrated :hover {
+    color: rgb(255, 0, 0);
+    text-shadow: 0px 0px 20px #ff1414;
+}
+
+.star-section .rated {
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+    font-size: 28px;
+    color: rgb(255, 213, 0);
+    text-shadow: 0px 0px 20px #FFF014;
+}
