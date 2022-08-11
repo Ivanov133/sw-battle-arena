@@ -44,7 +44,7 @@ export const Rating = ({
             "rating_value": clickedRating
         }
 
-        if (window.confirm(`Do you want to rate this character with ${clickedRating}?`)) {
+        if (window.confirm(`Do you want to rate this character with ${clickedRating} stars?`)) {
             postCharacterRating(body).then(
                 result => {
                     setCurrentRating(calcRating([...characterRatingsList, result]))
