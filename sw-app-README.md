@@ -4,8 +4,8 @@ I. Basic Application Concept
     The main purpose of the app is to serve as an online forum. The forum contains a database about
 Star Wars characters and has description about each one of them (much like a wikipedia site - the equivalent is
 a site called Wookipedia, at https://starwars.fandom.com/wiki/Darth_Nihilus).
-    The main differences here, are that each character's strength is subjectively evaluated by the creator,
-the characters can face each other in a battle, created by the users, and all of this content can be commented.
+    The main differences between this application and the above mentione website, are that each character's 
+strength is subjectively evaluated by the creator, the characters can face each other in a battle, created by the users, and all of this content can be commented on.
 
 II. Maintained functionalities
 
@@ -41,3 +41,15 @@ the character card - this initiates the Battle Panel component render. This lead
     Depending on which view is rendered, either the Character Comment section or the Battle Comment section will be
 shown. They both use the Comment component to render the comments, related to the specific character/battle which is
 currently rendered by the user. Full CRUD operations are possible for the logged in creator of the comment. All comments are visible to unauthorised users.
+
+
+
+
+
+
+#TODOs
+Pagination
+Character/battle rating system
+Comment like/dislike functionality
+Profile component extension - store likes, comments etc. in the profile 
+    and craete a ranking system for the users, based on their activity and contributions.
