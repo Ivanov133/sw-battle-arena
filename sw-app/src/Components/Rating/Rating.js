@@ -64,7 +64,7 @@ export const Rating = ({
             <h4>Rating: {curretRating} / 10</h4>
             <div className={styles["stars-wrapper"]}>
                 {characterRatingsList ? <ul>
-                    {[...Array(curretRating)].map((e, i) =>
+                    {[...Array(Math.floor(curretRating))].map((e, i) =>
                         <li className={styles[`${userHasRated}`]} key={i}><button className={styles[`${userHasRated}`]} value={i + 1} onClick={(ev) => onRate(ev)} disabled={userHasRated === "rated" ? true : false}>&#9733;</button></li>
                     )}
                 </ul> : null}
