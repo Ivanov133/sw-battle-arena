@@ -10,8 +10,10 @@ export const Rating = ({
 
     const { user } = useContext(AuthContext)
     const [characterRatingsList, setCharacterRatingsList] = useState([])
-    const [curretRating, setCurrentRating] = useState()
+    const [curretRating, setCurrentRating] = useState(10)
     const [userHasRated, setUserHasRated] = useState("unrated")
+
+    console.log(curretRating);
 
     useEffect(() => {
         getAllCharacterRatings().then(result => {
@@ -62,8 +64,13 @@ export const Rating = ({
             <h4>Rating: {curretRating} / 10</h4>
             <div className={styles["stars-wrapper"]}>
                 {characterRatingsList ? <ul>
-                    {[...Array(10)].map((e, i) =>
-                        <li className={styles[`${userHasRated}`]} key={i}><button className={styles[`${userHasRated}`]}  value={i + 1} onClick={(ev) => onRate(ev)} disabled={userHasRated === "rated" ? true : false}>&#9733;</button></li>
+                    {[...Array(curretRating)].map((e, i) =>
+                        <li className={styles[`${userHasRated}`]} key={i}><button className={styles[`${userHasRated}`]} value={i + 1} onClick={(ev) => onRate(ev)} disabled={userHasRated === "rated" ? true : false}>&#9733;</button></li>
+                    )}
+                </ul> : null}
+                {characterRatingsList ? <ul>
+                    {[...Array(Math.ceil(10 - curretRating))].map((e, i) =>
+                        <li className={styles[`${userHasRated}`]} key={i}><button className={styles[`inactive-stars`]} value={curretRating + i + 1} onClick={(ev) => onRate(ev)} disabled={userHasRated === "rated" ? true : false}>&#9733;</button></li>
                     )}
                 </ul> : null}
             </div>

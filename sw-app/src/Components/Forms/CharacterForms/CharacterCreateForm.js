@@ -62,7 +62,7 @@ export const CharacterCreateForm = ({
         let data = Object.fromEntries(new FormData(e.target.parentNode))
         data.feats = data.feats.split(",")
 
-        //Send request for the character creation and the starting rating
+        //Send request for the character creation and the starting rating - user creator can't rate his own character
         characterService.createCharacter(data)
             .then(character => {
                 const ratingData = {

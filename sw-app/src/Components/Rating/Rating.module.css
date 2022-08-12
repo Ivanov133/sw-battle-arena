@@ -4,12 +4,17 @@
     align-items: center;
 }
 
+.star-section div {
+    display: flex;
+}
+
 .star-section h4 {
     margin: 0;
     font-style: italic;
 }
 
 .star-section ul {
+    display: inline-block;
     padding: 0;
     margin: 0;
     display: flex;
@@ -44,4 +49,12 @@
     font-size: 28px;
     color: rgb(255, 213, 0);
     text-shadow: 0px 0px 20px #FFF014;
+}
+
+.inactive-stars {
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+    font-size: 28px;
+    color: rgb(61, 61, 61);
+    text-shadow: 0px 0px 20px #3d3d3d;
 }
