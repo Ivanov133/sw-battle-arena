@@ -3,7 +3,7 @@ import { useState, useEffect, useContext } from "react"
 import styles from "./CharactersList.module.css"
 import { BattleSelectPanel } from '../Battles/BattleSelectPanel'
 import { CharacterCreateForm } from "../Forms/CharacterForms/CharacterCreateForm"
-import { createCharacter, getAllCharacters } from '../../services/characterService'
+import { getAllCharacters } from '../../services/characterService'
 import { charactersData, loadData } from "../../helpers/prefetchData"
 import { AuthContext } from '../../contexts/authContext'
 import { useNavigate } from "react-router-dom"
@@ -16,7 +16,7 @@ export const CharacterList = () => {
     const [formType, setFormType] = useState(null)
     const { user } = useContext(AuthContext)
     const [currentPage, setCurrentPage] = useState(1)
-    const [charactersPerPage, setCharactersPerPage] = useState(10)
+    const [charactersPerPage] = useState(10)
 
     useEffect(() => {
         getAllCharacters()
