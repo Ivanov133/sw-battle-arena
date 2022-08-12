@@ -8,6 +8,12 @@
     position: relative;
 }
 
+.form-wrapper form p {
+    color: red;
+    font-size: 12px;
+    text-align: left;
+}
+
 
 form label {
     color: white;
@@ -43,8 +49,6 @@ form input, select {
     top: 255px;
     right: 55px;
 
-}
-.profile-img-preview img {
 }
 
 .profile-img-preview h4 {
