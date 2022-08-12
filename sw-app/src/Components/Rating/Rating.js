@@ -13,8 +13,6 @@ export const Rating = ({
     const [curretRating, setCurrentRating] = useState(10)
     const [userHasRated, setUserHasRated] = useState("unrated")
 
-    console.log(curretRating);
-
     useEffect(() => {
         getAllCharacterRatings().then(result => {
             const ratings = result.filter(x => {
@@ -30,9 +28,6 @@ export const Rating = ({
 
         })
     }, [])
-
-    console.log(characterRatingsList);
-    console.log(curretRating);
 
     const onRate = (ev) => {
         const clickedRating = Number(ev.target.value)
