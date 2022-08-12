@@ -1,0 +1,28 @@
+.paginator-wrapper {
+    position: absolute;
+    bottom: -65px;
+    width: 100%;
+}
+
+.paginator-wrapper ul {
+    display: flex;
+    justify-content: center;
+}
+
+.paginator-wrapper ul li {
+    list-style: none;
+    width: 15px;
+    margin: 15px;
+}
+
+.paginator-wrapper a {
+    text-decoration: none;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.751);
+    padding: 6px 15px;
+    font-size: 16px;
+    color: white;
+    margin: 0;
+
+}

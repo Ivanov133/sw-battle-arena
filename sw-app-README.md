@@ -42,3 +42,4 @@ the character card - this initiates the Battle Panel component render. This lead
 shown. They both use the Comment component to render the comments, related to the specific character/battle which is
 currently rendered by the user. Full CRUD operations are possible for the logged in creator of the comment. All comments are visible to unauthorised users.
 
+

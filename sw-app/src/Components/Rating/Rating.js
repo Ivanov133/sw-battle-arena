@@ -16,21 +16,25 @@ export const Rating = ({
     useEffect(() => {
         getAllCharacterRatings().then(result => {
             const ratings = result.filter(x => {
-                if (x._ownerId === user._id && x.character_id == id) {
+                if (x._ownerId === user._id && x.character_id === id) {
                     setUserHasRated("rated")
                 }
                 if (x.character_id === id) {
                     return x
                 }
+
             })
             setCharacterRatingsList(ratings)
             setCurrentRating(calcRating(ratings))
 
         })
-    }, [])
+    }, [id, user._id])
 
     const onRate = (ev) => {
         const clickedRating = Number(ev.target.value)
+        if (!user.email) {
+            return alert("Please log in to rate character");
+        }
 
         if (userHasRated === "rated") {
             return alert("Already Rated");

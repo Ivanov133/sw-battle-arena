@@ -7,6 +7,7 @@ import { createCharacter, getAllCharacters } from '../../services/characterServi
 import { charactersData, loadData } from "../../helpers/prefetchData"
 import { AuthContext } from '../../contexts/authContext'
 import { useNavigate } from "react-router-dom"
+import { Paginator } from "../Navigation/Paginator"
 
 export const CharacterList = () => {
     const navigate = useNavigate()
@@ -14,14 +15,26 @@ export const CharacterList = () => {
     const [battleCharacters, setBattle] = useState([])
     const [formType, setFormType] = useState(null)
     const { user } = useContext(AuthContext)
+    const [currentPage, setCurrentPage] = useState(1)
+    const [charactersPerPage, setCharactersPerPage] = useState(10)
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         getAllCharacters()
             .then(result => {
-                if (result) { setCharacters(Object.values(result)) }
+                setLoading(true)
+                if (result) {
+                    setCharacters(Object.values(result))
+                    setLoading(false)
+                }
             })
 
     }, []);
+
+    const indexOfLastCharacter = currentPage * charactersPerPage
+    const indexOfFirstCharacter = indexOfLastCharacter - charactersPerPage
+    const currentCharacters = characters.slice(indexOfFirstCharacter, indexOfLastCharacter)
+
 
     //This is optional to use - load data into server and make authorized request - log in to make button visible
     function initialDataLoad() {
@@ -38,7 +51,7 @@ export const CharacterList = () => {
             setBattle(battleCharacters => [...battleCharacters, character])
         }
     }
-    
+
     function userAction(action) {
         setFormType(action)
     }
@@ -46,6 +59,16 @@ export const CharacterList = () => {
     function closeHandler() {
         setFormType(null);
     };
+
+    function paginate(n) {
+        setCurrentPage(n)
+    }
+
+
+
+    if (loading) {
+        return "Loading data..."
+    }
 
     return (
         <>
@@ -63,14 +86,14 @@ export const CharacterList = () => {
 
                 <h1>Characters Catalog</h1>
                 {characters.length > 0 ?
-                characters.map(character =>
-                    <Character clickEv={ev => selectCharacters(ev, character)}
-                        key={character._id}
-                        character={character}
-                    />) : <p>No characters available. Please login to add new characters or load data from database.</p>}
+                    currentCharacters.map(character =>
+                        <Character clickEv={ev => selectCharacters(ev, character)}
+                            key={character._id}
+                            character={character}
+                        />) : <p>No characters available. Please login to add new characters or load data from database.</p>}
 
                 {formType === "Create" && <CharacterCreateForm setCharacters={setCharacters} onClose={closeHandler} />}
-                
+
                 {/* Add character */}
                 {user.email
                     ?
@@ -79,6 +102,7 @@ export const CharacterList = () => {
                     </div>
                     :
                     null}
+                <Paginator charactersPerPage={charactersPerPage} totalCharacters={characters.length} paginate={paginate}/>
             </main>
         </>
     )
