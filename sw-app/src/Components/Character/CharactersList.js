@@ -17,15 +17,12 @@ export const CharacterList = () => {
     const { user } = useContext(AuthContext)
     const [currentPage, setCurrentPage] = useState(1)
     const [charactersPerPage, setCharactersPerPage] = useState(10)
-    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         getAllCharacters()
             .then(result => {
-                setLoading(true)
                 if (result) {
                     setCharacters(Object.values(result))
-                    setLoading(false)
                 }
             })
 
@@ -62,12 +59,6 @@ export const CharacterList = () => {
 
     function paginate(n) {
         setCurrentPage(n)
-    }
-
-
-
-    if (loading) {
-        return "Loading data..."
     }
 
     return (
